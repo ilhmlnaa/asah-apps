@@ -1,0 +1,220 @@
+newman run .\Bookshelf-API-Test.postman_collection.json --environment .\Bookshelf-API-Test.postman_environment.json 
+newman
+
+Bookshelf API Test
+
+→ [Mandatory] Add Book With Complete Data
+  POST http://localhost:9000/books [201 Created, 379B, 62ms]
+  √  status code should be 201
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+  √  response body data should contain bookId
+
+→ [Mandatory] Add Book With Finished Reading
+  POST http://localhost:9000/books [201 Created, 379B, 6ms]
+  √  status code should be 201
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+  √  response body data should contain bookId
+
+→ [Mandatory] Add Book Without Name
+  POST http://localhost:9000/books [400 Bad Request, 361B, 4ms]
+  √  status code should be 400
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+
+→ [Mandatory] Add Book with Page Read More Than Page Count
+  POST http://localhost:9000/books [400 Bad Request, 390B, 4ms]
+  √  status code should be 400
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+
+→ [Mandatory] Get All Books
+  GET http://localhost:9000/books [200 OK, 491B, 5ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body object should have correct property and value
+  √  response body data object should have a array books and contains two items
+  √  the books should have contains only id, name, and publisher property
+
+→ [Mandatory] Get Detail Books With Correct Id
+  GET http://localhost:9000/books/SZJ41c-DKhtRfhfz [200 OK, 626B, 6ms]
+  √  response code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should an object
+  √  response body object should contain correct property and value
+  √  response body data object should contain book object
+  √  book object should contain correct property and value
+
+→ [Mandatory] Get Detail Finished Book
+  GET http://localhost:9000/books/3sggGxKDwUMzMNd9 [200 OK, 626B, 4ms]
+  √  response code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should an object
+  √  response body object should contain correct property and value
+  √  response body data object should contain book object
+  √  book object should contain correct property and value
+
+→ [Mandatory] Get Detail Books With Invalid Id
+  GET http://localhost:9000/books/xxxxx [404 Not Found, 336B, 5ms]
+  √  response code should be 404
+  √  response header Content-Type should be application/json
+  √  response body should an object
+  √  response body object should contain correct property and value
+
+→ [Mandatory] Update Book With Complete Data
+  PUT http://localhost:9000/books/SZJ41c-DKhtRfhfz [200 OK, 336B, 9ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+  √  when get detail books
+  GET http://localhost:9000/books/SZJ41c-DKhtRfhfz [200 OK, 620B, 6ms]
+  √  book object should contain updated values
+
+→ [Mandatory] Update Book Without Name
+  PUT http://localhost:9000/books/SZJ41c-DKhtRfhfz [400 Bad Request, 361B, 4ms]
+  √  status code should be 400
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+
+→ [Mandatory] Update Book With Page Read More Than Page Count
+  PUT http://localhost:9000/books/SZJ41c-DKhtRfhfz [400 Bad Request, 390B, 3ms]
+  √  status code should be 400
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+
+→ [Mandatory] Update Book with Invalid Id
+  PUT http://localhost:9000/books/xxxxx [404 Not Found, 358B, 4ms]
+  √  status code should be 404
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+
+→ [Mandatory] Delete Book with Correct Id
+  DELETE http://localhost:9000/books/SZJ41c-DKhtRfhfz [200 OK, 333B, 5ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+  √  when get detail books
+  GET http://localhost:9000/books/SZJ41c-DKhtRfhfz [404 Not Found, 336B, 3ms]
+  √  The book should be not found
+
+→ [Mandatory] Delete Finished book
+  DELETE http://localhost:9000/books/3sggGxKDwUMzMNd9 [200 OK, 333B, 3ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+  √  when get detail books
+  GET http://localhost:9000/books/3sggGxKDwUMzMNd9 [404 Not Found, 336B, 3ms]
+  √  The book should be not found
+
+→ [Mandatory] Delete Book with Invalid Id
+  DELETE http://localhost:9000/books/xxxxx [404 Not Found, 354B, 4ms]
+  √  status code should be 404
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body should have correct property and value
+
+→ Add Reading and Finished Book
+  POST http://localhost:9000/books [201 Created, 379B, 5ms]
+
+→ Add Reading and Unfinished Book with "Dicoding" Name
+  POST http://localhost:9000/books [201 Created, 379B, 3ms]
+
+→ Add Unreading Books and Unfinished Book "Dicoding" Name
+  POST http://localhost:9000/books [201 Created, 379B, 7ms]
+
+→ Add Unreading Books and Unfinished Book
+  POST http://localhost:9000/books [201 Created, 379B, 3ms]
+
+→ [Optional] Get All Reading Books
+  GET http://localhost:9000/books?reading=1 [200 OK, 499B, 2ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body object should have correct property and value
+  √  response body data object should have a array books and contains 2 items
+  √  the books should have contains only id, name, and publisher property
+
+→ [Optional] Get All Unreading Books
+  GET http://localhost:9000/books?reading=0 [200 OK, 498B, 3ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body object should have correct property and value
+  √  response body data object should have a array books and contains at 2 items
+  √  the books should have contains only id, name, and publisher property
+
+→ [Optional] Get All Finished Books
+  GET http://localhost:9000/books?finished=1 [200 OK, 416B, 3ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body object should have correct property and value
+  √  response body data object should have a array books and contains 1 items
+  √  the books should have contains only id, name, and publisher property
+
+→ [Optional] Get All Unfinished Books
+  GET http://localhost:9000/books?finished=0 [200 OK, 581B, 4ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body object should have correct property and value
+  √  response body data object should have a array books and contains 3 items
+  √  the books should have contains only id, name, and publisher property
+
+→ [Optional] Get All Books Contains "Dicoding" Name
+  GET http://localhost:9000/books?name=Dicoding [200 OK, 506B, 3ms]
+  √  status code should be 200
+  √  response header Content-Type should be application/json
+  √  response body should be an object
+  √  response body object should have correct property and value
+  √  response body data object should have a array books and contains 2 items
+  √  the books should have contains only id, name, and publisher property
+  GET http://localhost:9000/books [200 OK, 656B, 4ms]
+  DELETE http://localhost:9000/books/HiWy5V9aReAcJ48V   DELETE http://localhost:9000/books/uy6Frb1f8aPxeZK_   DELETE http://localhost:9000/books/Fan5hSYJLYJqDoXV   DELETE http://localhost:9000/books/rwecGylTIB67eUWh [200 OK, 333B, 17ms]
+  ┌
+  │ 'Book HiWy5V9aReAcJ48V deleted'
+  └
+[200 OK, 333B, 19ms]
+  ┌
+  │ 'Book rwecGylTIB67eUWh deleted'
+  └
+[200 OK, 333B, 39ms]
+  ┌
+  │ 'Book uy6Frb1f8aPxeZK_ deleted'
+  └
+[200 OK, 333B, 42ms]
+  ┌
+  │ 'Book Fan5hSYJLYJqDoXV deleted'
+  └
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │               32 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │               48 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │               26 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │              104 │               0 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 2.1s                                     │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 4.09kB (approx)                         │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 9ms [min: 2ms, max: 62ms, s.d.: 13ms] │
+└──────────────────────────────────────────────────────────────┘
