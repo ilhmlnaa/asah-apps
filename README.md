@@ -1,6 +1,6 @@
-# asah-apps
+# ASAH led by Dicoding in association with Accenture 2025
 
-Monorepo berisi berbagai proyek frontend dan backend yang dikembangkan selama program **ASAH (Accenture & Dicoding 2025)**.
+Monorepo berisi berbagai proyek frontend dan backend yang dibuat selama menjalani program **ASAH (Accenture & Dicoding 2025)**.
 
 ## 📂 Daftar Aplikasi
 
@@ -21,3 +21,4 @@ Monorepo berisi berbagai proyek frontend dan backend yang dikembangkan selama pr
 
 > 🧭 **Tips**: Klik badge “🌐 Live Demo” untuk langsung mencoba aplikasinya.  
 > 📌 Lihat masing-masing branch untuk dokumentasi dan kode lengkap.
+
