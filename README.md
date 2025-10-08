@@ -1,6 +1,6 @@
 # Personal Notes App
 
-Personal Notes App adalah aplikasi web untuk mengelola catatan pribadi yang dibuat menggunakan React. Aplikasi ini merupakan submission untuk kelas **Belajar Membuat Aplikasi Web dengan React**.
+Personal Notes App adalah aplikasi web untuk mengelola catatan pribadi yang dibuat menggunakan React. Aplikasi ini merupakan submission pertama untuk kelas **Belajar Membuat Aplikasi Web dengan React**.
 
 ## 🌟 Fitur
 
@@ -142,4 +142,4 @@ Project ini dibuat untuk keperluan submission kelas. Jika Anda memiliki saran at
 
 ---
 
-_Project ini dibuat sebagai submission untuk kelas "Belajar Membuat Aplikasi Web dengan React"_
+_Project ini dibuat sebagai submission pertama untuk kelas "Belajar Membuat Aplikasi Web dengan React"_
