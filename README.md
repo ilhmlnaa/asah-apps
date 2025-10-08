@@ -1,5 +1,7 @@
 # Personal Notes App
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://m.hamdiv.me/asah/personal-notes-router/)
+
 **Proyek: Membangun Single Page Application menggunakan React**
 
 Personal Notes App adalah aplikasi web sederhana untuk mengelola catatan pribadi yang dibuat menggunakan React. Aplikasi ini merupakan submission pertama untuk kelas **Belajar Fundamental Aplikasi Web dengan React** dengan fokus pada implementasi dasar React, routing, dan state management.
