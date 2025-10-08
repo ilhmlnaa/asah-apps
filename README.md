@@ -1,5 +1,8 @@
 # Personal Notes App
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://m.hamdiv.me/asah/personal-notes-router-v2/)
+
+
 **Proyek: Membangun SPA + API, Context, dan Hooks**
 
 Personal Notes App adalah aplikasi web untuk mengelola catatan pribadi yang dibuat menggunakan React. Aplikasi ini merupakan submission kedua untuk kelas **Belajar Fundamental Aplikasi Web dengan React** dengan implementasi fitur autentikasi, routing, dan integrasi API.
