@@ -1,5 +1,7 @@
 # Bookshelf App
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://m.hamdiv.me/asah/bookself/)
+
 **Proyek: Membangun Bookshelf App**
 
 Bookshelf App adalah aplikasi web untuk mengelola koleksi buku pribadi yang dibuat menggunakan HTML, CSS, dan JavaScript vanilla. Aplikasi ini merupakan submission untuk kelas **Belajar Membuat Front-End Web untuk Pemula** dengan implementasi fitur CRUD, pencarian, dan local storage.
