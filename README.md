@@ -1,5 +1,7 @@
 # Bookshelf API
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://bookshelf.asah-app.hamdiv.me/)
+
 **Proyek: Belajar Membuat Aplikasi Web dengan React**
 
 Bookshelf API adalah RESTful API untuk mengelola koleksi buku yang dibuat menggunakan framework Hapi.js. Aplikasi ini merupakan submission untuk kelas **Belajar Back-End Pemula dengan JavaScript** dengan implementasi CRUD operations, filtering, dan validasi data.
