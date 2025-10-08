@@ -1,5 +1,8 @@
 # Personal Notes App
-**Proyek: Membangun Aplikasi Catatan Menggunakan React*
+
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://m.hamdiv.me/asah/personal-notes/)
+
+**Proyek: Membangun Aplikasi Catatan Menggunakan React**
 
 Personal Notes App adalah aplikasi web untuk mengelola catatan pribadi yang dibuat menggunakan React. Aplikasi ini merupakan submission pertama untuk kelas **Belajar Membuat Aplikasi Web dengan React**.
 
