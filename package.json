@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "OpenMusic API version 1 Submission Ilham Maulana",
   "main": "src/server.js",
-  "type": "commonjs",
   "scripts": {
     "start": "node ./src/server.js",
     "start:prod": "NODE_ENV=production node ./src/server.js",
