@@ -1,0 +1,38 @@
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=5000
+      - PGUSER=openmusic
+      - PGPASSWORD=openmusicpassword
+      - PGDATABASE=openmusicdb
+      - PGHOST=postgres
+      - PGPORT=5432
+    depends_on:
+      - postgres
+    networks:
+      - openmusic-network
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=openmusic
+      - POSTGRES_PASSWORD=openmusicpassword
+      - POSTGRES_DB=openmusicdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - openmusic-network
+
+volumes:
+  postgres_data:
+
+networks:
+  openmusic-network:
+    driver: bridge
