@@ -1,0 +1,39 @@
+{
+  "name": "openmusic-api-v2",
+  "version": "2.0.0",
+  "description": "OpenMusic API version 2 Submission - Full Featured Music API with Authentication and Playlists",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "start:prod": "NODE_ENV=production node ./src/server.js",
+    "start:dev": "nodemon ./src/server.js",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "migrate": "node-pg-migrate"
+  },
+  "keywords": [
+    "openmusic",
+    "api",
+    "hapi"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.3.2",
+    "@hapi/jwt": "^3.2.0",
+    "auto-bind": "^4.0.0",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^17.2.3",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "nanoid": "^3.1.20",
+    "node-pg-migrate": "^8.0.3",
+    "pg": "^8.16.3"
+  }
+}

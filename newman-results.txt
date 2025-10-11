@@ -1,0 +1,494 @@
+Open Music API V1 Test
+
+□ Albums
+└ Add Album with Invalid Payload
+  POST http://localhost:5000/albums [400 Bad Request, 338B, 60ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Album with Invalid Payload
+
+└ Add Album with Invalid Payload
+  POST http://localhost:5000/albums [400 Bad Request, 343B, 6ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Album with Invalid Payload
+
+└ Add Album with Invalid Payload
+  POST http://localhost:5000/albums [400 Bad Request, 338B, 5ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Album with Invalid Payload
+
+└ Add Album with Invalid Payload
+  POST http://localhost:5000/albums [400 Bad Request, 343B, 5ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ Add Album with Valid Payload
+  POST http://localhost:5000/albums [201 Created, 348B, 36ms]
+  √  it should response 201 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Get Detail Album with Invalid Id
+  GET http://localhost:5000/albums/xxx [404 Not Found, 337B, 8ms]
+  √  it should response 404 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Get Detail Album with Valid Id
+  GET http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [200 OK, 494B, 8ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Edit Album with Invalid Payload
+  PUT http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [400 Bad Request, 338B, 5ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Album with Invalid Payload
+
+└ Edit Album with Invalid Payload
+  PUT http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [400 Bad Request, 343B, 10ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Album with Invalid Payload
+
+└ Edit Album with Invalid Payload
+  PUT http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [400 Bad Request, 338B, 4ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Album with Invalid Payload
+
+└ Edit Album with Invalid Payload
+  PUT http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [400 Bad Request, 343B, 4ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ Edit Album with Invalid Id
+  PUT http://localhost:5000/albums/xxx [404 Not Found, 359B, 6ms]
+  √  it should response 404 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Edit Album with Valid Id
+  PUT http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [200 OK, 337B, 8ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+  √  when GET detail albums
+  GET http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [200 OK, 503B, 8ms]
+  √  it should response with revised content
+
+└ Delete Album with Invalid Id
+  DELETE http://localhost:5000/albums/xxx [404 Not Found, 355B, 7ms]
+  √  it should response 404 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Delete Album with Valid Id
+  DELETE http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [200 OK, 334B, 7ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+  √  when GET detail albums
+  GET http://localhost:5000/albums/album-eHM72OmAAhF7Ksh- [404 Not Found, 337B, 6ms]
+  √  it should response with not found
+
+□ Songs
+└ Add Song with Invalid Payload
+  POST http://localhost:5000/songs [400 Bad Request, 339B, 4ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Song with Invalid Payload
+
+└ Add Song with Invalid Payload
+  POST http://localhost:5000/songs [400 Bad Request, 344B, 4ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Song with Invalid Payload
+
+└ Add Song with Invalid Payload
+  POST http://localhost:5000/songs [400 Bad Request, 338B, 3ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Song with Invalid Payload
+
+└ Add Song with Invalid Payload
+  POST http://localhost:5000/songs [400 Bad Request, 343B, 3ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Song with Invalid Payload
+
+└ Add Song with Invalid Payload
+  POST http://localhost:5000/songs [400 Bad Request, 339B, 4ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Song with Invalid Payload
+
+└ Add Song with Invalid Payload
+  POST http://localhost:5000/songs [400 Bad Request, 339B, 2ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Song with Invalid Payload
+
+└ Add Song with Invalid Payload
+  POST http://localhost:5000/songs [400 Bad Request, 339B, 2ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Add Song with Invalid Payload
+
+└ Add Song with Invalid Payload
+  POST http://localhost:5000/songs [400 Bad Request, 344B, 4ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ Add Song with Valid Payload
+  POST http://localhost:5000/songs [201 Created, 346B, 19ms]
+  √  it should response 201 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ [No Test] Add Song with Valid Payload
+  POST http://localhost:5000/songs [201 Created, 346B, 5ms]
+
+└ Get All Songs
+  GET http://localhost:5000/songs [200 OK, 953B, 5ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ Get Detail Songs with Invalid Id
+  GET http://localhost:5000/songs/xxx [404 Not Found, 336B, 5ms]
+  √  it should response 404 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Get Detail Songs with Valid Id
+  GET http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [200 OK, 556B, 5ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Edit Song with Invalid Payload
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [400 Bad Request, 339B, 3ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Song with Invalid Payload
+
+└ Edit Song with Invalid Payload
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [400 Bad Request, 344B, 3ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Song with Invalid Payload
+
+└ Edit Song with Invalid Payload
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [400 Bad Request, 338B, 4ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Song with Invalid Payload
+
+└ Edit Song with Invalid Payload
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [400 Bad Request, 343B, 3ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Song with Invalid Payload
+
+└ Edit Song with Invalid Payload
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [400 Bad Request, 339B, 2ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Song with Invalid Payload
+
+└ Edit Song with Invalid Payload
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [400 Bad Request, 339B, 3ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Song with Invalid Payload
+
+└ Edit Song with Invalid Payload
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [400 Bad Request, 339B, 3ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+  ┌
+  │ 'Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.'
+  └
+
+Attempting to set next request to Edit Song with Invalid Payload
+
+└ Edit Song with Invalid Payload
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [400 Bad Request, 344B, 3ms]
+  √  it should response 400 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ Edit Song with Invalid Id
+  PUT http://localhost:5000/songs/xxx [404 Not Found, 358B, 4ms]
+  √  it should response 404 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Edit Song with Valid Id
+  PUT http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [200 OK, 336B, 5ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+  √  when GET detail song
+  GET http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [200 OK, 571B, 4ms]
+  √  it should response with revised content
+
+└ Delete Song with Invalid Id
+  DELETE http://localhost:5000/songs/xxx [404 Not Found, 354B, 4ms]
+  √  it should response 404 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ Delete Song with Valid Id
+  DELETE http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [200 OK, 333B, 5ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+  √  when GET detail song
+  GET http://localhost:5000/songs/song-H8AcJlix8MWfX6Tm [404 Not Found, 336B, 5ms]
+  √  it should response with not found
+
+□ [Optional] Song in Album / [No test] Prerequisite
+└ Add Album
+  POST http://localhost:5000/albums [201 Created, 348B, 5ms]
+
+└ Add Album With No Songs
+  POST http://localhost:5000/albums [201 Created, 348B, 6ms]
+
+□ [Optional] Song in Album
+└ [Optional] Add Song A with Album Id
+  POST http://localhost:5000/songs [201 Created, 346B, 6ms]
+  √  it should response 201 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ [Optional] Add Song B with Album Id
+  POST http://localhost:5000/songs [201 Created, 346B, 5ms]
+  √  it should response 201 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ [Optional] Get Detail Album which Contains Songs
+  GET http://localhost:5000/albums/album-COcltTRkn9MW2ghH [200 OK, 649B, 6ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+└ [Optional] Get Detail Album which Not Contains Songs
+  GET http://localhost:5000/albums/album-4zKD4FJwpqV8i6Y6 [200 OK, 494B, 4ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have correct property and value
+
+□ [Optional] Query Parameter / [No Test] Prerequisite
+└ Add Song A
+  POST http://localhost:5000/songs [201 Created, 346B, 5ms]
+
+└ Add Song B
+  POST http://localhost:5000/songs [201 Created, 346B, 6ms]
+
+└ Add Song C
+  POST http://localhost:5000/songs [201 Created, 346B, 6ms]
+
+└ Add Song D
+  POST http://localhost:5000/songs [201 Created, 346B, 6ms]
+
+□ [Optional] Query Parameter
+└ [Optional] Seach Song using Title
+  GET http://localhost:5000/songs?title=cint [200 OK, 484B, 5ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ [Optional] Seach Song using Performer
+  GET http://localhost:5000/songs?performer=chris [200 OK, 489B, 5ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ [Optional] Seach Song using Title and Performer
+  GET http://localhost:5000/songs?title=kupu&performer=peter [200 OK, 421B, 4ms]
+  √  it should response 200 status code
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body have correct property and value
+
+└ [Optional] Delete Song A
+  DELETE http://localhost:5000/songs/song-GMEtH8W0CD4qPEQS [200 OK, 333B, 8ms]
+
+└ [Optional] Delete Song B
+  DELETE http://localhost:5000/songs/song-uz_NJqRQkMjFri-i [200 OK, 333B, 10ms]
+
+└ [Optional] Delete Song C
+  DELETE http://localhost:5000/songs/song-GW-yZWCE41CvyIlJ [200 OK, 333B, 5ms]
+
+└ [Optional] Delete Song D
+  DELETE http://localhost:5000/songs/song-nYSb1wSmwyNcNMml [200 OK, 333B, 4ms]
+
+┌─────────────────────────┬─────────────────┬─────────────────┐
+│                         │        executed │          failed │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│              iterations │               1 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│                requests │              61 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│            test-scripts │              57 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│      prerequest-scripts │              39 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│              assertions │             192 │               0 │
+├─────────────────────────┴─────────────────┴─────────────────┤
+│ total run duration: 3.9s                                    │
+├─────────────────────────────────────────────────────────────┤
+│ total data received: 5.47kB (approx)                        │
+├─────────────────────────────────────────────────────────────┤
+│ average response time: 6ms [min: 2ms, max: 60ms, s.d.: 8ms] │
+└─────────────────────────────────────────────────────────────┘
