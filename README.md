@@ -1,6 +1,6 @@
 # OpenMusic API V2
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://openmusic.asah-app.hamdiv.me/)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://openmusic-v2.asah-app.hamdiv.me/)
 
 **Proyek: Open Music API Versi 2**
 
