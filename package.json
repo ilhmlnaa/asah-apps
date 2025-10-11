@@ -1,7 +1,7 @@
 {
   "name": "openmusic-api-v2",
   "version": "2.0.0",
-  "description": "OpenMusic API version 2 Submission - Full Featured Music API with Authentication and Playlists",
+  "description": "OpenMusic API version 2 Submission Ilham Maulana",
   "main": "src/server.js",
   "scripts": {
     "start": "node ./src/server.js",
