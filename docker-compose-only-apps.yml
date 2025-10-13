@@ -1,0 +1,17 @@
+services:
+  openmusic-app:
+    build: ./openmusicv3-app
+    ports:
+      - "5000:5000"
+    networks:
+      - openmusic-network
+
+  openmusic-consumer:
+    build: ./openmusicv3-consumer
+    restart: always
+    networks:
+      - openmusic-network
+
+networks:
+  openmusic-network:
+    driver: bridge
