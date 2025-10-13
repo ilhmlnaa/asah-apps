@@ -15,12 +15,14 @@ services:
       - ACCESS_TOKEN_KEY=youraccesstokenkey
       - REFRESH_TOKEN_KEY=yourrefreshtokenkey
       - ACCESS_TOKEN_AGE=1800
-      - RABBITMQ_SERVER=amqp://rabbitmq
+      - RABBITMQ_SERVER=amqp://admin:password@rabbitmq
       - REDIS_SERVER=redis
-      - SMTP_HOST=sandbox.smtp.mailtrap.io
-      - SMTP_PORT=465
-      - SMTP_USER=your-email@gmail.com
-      - SMTP_PASSWORD=your-app-password
+      - STORAGE_PROVIDER=minio # optional, default is 'aws'
+      - AWS_ACCESS_KEY_ID=fNzU3XkKl82PwSVwWDvQ
+      - AWS_SECRET_ACCESS_KEY=z1tDvMlItRLBdIswT14udND12NgQzOUJ99RxUd3v
+      - AWS_REGION=ap-southeast-1
+      - AWS_BUCKET_NAME=openmusic-app
+      - AWS_ENDPOINT=https://cdn.hamdiv.me # optional, for MINIO or custom S3 provider only!
     depends_on:
       - postgres
       - redis
@@ -36,14 +38,15 @@ services:
       - PGPASSWORD=openmusicpassword
       - PGDATABASE=openmusicv3
       - PGPORT=5432
-      - RABBITMQ_SERVER=amqp://rabbitmq
-      - SMTP_HOST=smtp.gmail.com
-      - SMTP_PORT=465
-      - SMTP_USER=your-email@gmail.com
-      - SMTP_PASSWORD=your-app-password
+      - RABBITMQ_SERVER=amqp://admin:password@rabbitmq
+      - SMTP_HOST=sandbox.smtp.mailtrap.io
+      - SMTP_PORT=2525
+      - SMTP_USER=your-username
+      - SMTP_PASSWORD=your-password
     depends_on:
       - postgres
       - rabbitmq
+    restart: always
     networks:
       - openmusic-network
 
@@ -72,7 +75,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports:
-      - "15672:15672" 
+      - "15672:15672"
       - "5672:5672"
     environment:
       - RABBITMQ_DEFAULT_USER=admin

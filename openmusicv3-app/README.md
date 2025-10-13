@@ -14,6 +14,8 @@
 - **Authorization**: Kontrol akses berdasarkan ownership dan kolaborasi
 - **Refresh Token**: Sistem refresh token untuk keamanan
 
+---
+
 ## 🛠️ Teknologi yang Digunakan
 
 - **Node.js** - Runtime JavaScript
@@ -27,6 +29,41 @@
 - **nanoid** - ID generator
 - **Nodemailer** - Email service
 - **AWS SDK** - Cloud storage (opsional)
+
+
+## 🗂️ Struktur Project
+
+```
+openmusicv3-app/
+├── migrations/                   # Database migrations
+├── src/                           # Source code
+│   ├── api/                       # API handlers & routes
+│   │   ├── albums/               # Album endpoints
+│   │   ├── authentications/      # Auth endpoints
+│   │   ├── collaborations/       # Collaboration endpoints
+│   │   ├── exports/              # Export playlist endpoints
+│   │   ├── playlists/            # Playlist endpoints
+│   │   ├── songs/                # Song endpoints
+│   │   ├── uploads/              # File upload endpoints
+│   │   └── users/                # User endpoints
+│   ├── exceptions/               # Custom error classes
+│   ├── service/                  # Business logic services
+│   │   ├── postgres/            # Database services
+│   │   ├── rabbitmq/            # Message broker services
+│   │   ├── redis/               # Caching services
+│   │   └── storage/             # File storage services
+│   ├── tokenize/                # JWT token management
+│   ├── utils/                   # Utility functions
+│   ├── validator/               # Request validation schemas
+│   └── server.js                # Main server file
+├── docker-compose.yml           # Docker compose configuration
+├── docker-entrypoint.sh         # Docker entrypoint script
+├── Dockerfile                   # Docker image configuration
+├── package.json                 # NPM dependencies & scripts
+└── README.md                    # Project documentation
+```
+
+---
 
 ## 📚 API Endpoints
 
@@ -79,49 +116,6 @@
 ### 📤 Exports (Memerlukan Autentikasi)
 
 - `POST /export/playlists/{playlistId}` - Ekspor playlist ke email (hanya owner playlist)
-
-## 🌟 Fitur Utama
-
-### 🎵 Manajemen Album
-
-- ➕ **Tambah Album** - Menambahkan album baru ke dalam koleksi
-- 📀 **Detail Album** - Melihat informasi lengkap album beserta daftar lagu
-- ✏️ **Edit Album** - Mengubah informasi album yang sudah ada
-- 🗑️ **Hapus Album** - Menghapus album dari koleksi
-
-### 🎶 Manajemen Lagu
-
-- ➕ **Tambah Lagu** - Menambahkan lagu baru ke dalam koleksi
-- 🎵 **Lihat Semua Lagu** - Menampilkan daftar semua lagu dengan filtering
-- 🔍 **Detail Lagu** - Melihat informasi lengkap lagu berdasarkan ID
-- ✏️ **Edit Lagu** - Mengubah informasi lagu yang sudah ada
-- 🗑️ **Hapus Lagu** - Menghapus lagu dari koleksi
-
-### 🔍 Filtering & Pencarian
-
-- 🏷️ **Search by Title** - Mencari lagu berdasarkan judul
-- 🎤 **Search by Performer** - Mencari lagu berdasarkan performer
-- 🔄 **Combined Search** - Kombinasi pencarian title dan performer
-
-### 🛡️ Validasi Data & Error Handling
-
-- ✔️ **Input Validation** - Validasi semua input data menggunakan Joi
-- 🚫 **Error Handling** - Penanganan error yang comprehensive
-- 📝 **Response Format** - Format response yang konsisten
-- 🗄️ **Database Integration** - Penyimpanan data menggunakan PostgreSQL
-
-## 🛠️ Teknologi yang Digunakan
-
-- **Hapi.js 21.3.2** - Framework web untuk Node.js
-- **PostgreSQL** - Database relational untuk penyimpanan data
-- **Node.js** - Runtime environment JavaScript
-- **Joi** - Schema validation untuk JavaScript
-- **nanoid** - Generator ID unik untuk album dan lagu
-- **node-pg-migrate** - Database migration tool
-- **pg** - PostgreSQL client untuk Node.js
-- **dotenv** - Environment variable management
-- **ESLint** - Linting tool untuk code quality
-- **Docker** - Containerization platform
 
 ## 📦 Instalasi & Menjalankan
 

@@ -1,4 +1,4 @@
-const { Pool } = require("pg");
+const { Pool } = require('pg');
 
 class PlaylistsService {
   constructor() {
@@ -16,7 +16,7 @@ class PlaylistsService {
     const playlistResult = await this._pool.query(playlistQuery);
 
     if (!playlistResult.rows.length) {
-      throw new Error("Playlist tidak ditemukan");
+      throw new Error('Playlist tidak ditemukan');
     }
 
     const playlist = playlistResult.rows[0];

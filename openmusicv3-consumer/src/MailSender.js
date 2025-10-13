@@ -1,12 +1,11 @@
-const nodemailer = require("nodemailer");
-const config = require("./config");
+const nodemailer = require('nodemailer');
+const config = require('./config');
 
 class MailSender {
   constructor() {
     this._transporter = nodemailer.createTransport({
       host: config.smtp.host,
       port: config.smtp.port,
-      secure: true,
       auth: {
         user: config.smtp.user,
         pass: config.smtp.password,
@@ -16,13 +15,13 @@ class MailSender {
 
   sendEmail(targetEmail, content) {
     const message = {
-      from: "Open Music Apps",
+      from: 'Open Music Apps',
       to: targetEmail,
-      subject: "Ekspor Playlist",
-      text: "Terlampir hasil dari ekspor playlist",
+      subject: 'Ekspor Playlist',
+      text: 'Terlampir hasil dari ekspor playlist',
       attachments: [
         {
-          filename: "playlist.json",
+          filename: 'playlist.json',
           content,
         },
       ],

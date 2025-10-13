@@ -13,7 +13,24 @@ Program consumer untuk menangani ekspor playlist dari OpenMusic API v3. Consumer
 
 ---
 
-## 🚀 Instalasi
+## �️ Struktur Project
+
+```
+openmusicv3-consumer/
+├── src/                          # Source code
+│   ├── config.js                 # Configuration settings
+│   ├── consumer.js               # Main consumer application
+│   ├── listener.js               # RabbitMQ message listener
+│   ├── MailSender.js             # Email service handler
+│   └── PlaylistsService.js       # Database service for playlists
+├── Dockerfile                    # Docker image configuration
+├── package.json                  # NPM dependencies & scripts
+└── README.md                     # Project documentation
+```
+
+---
+
+## �🚀 Instalasi
 
 ### 1️⃣ Install Dependencies
 
