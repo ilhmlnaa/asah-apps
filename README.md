@@ -1,6 +1,8 @@
-# 🎧 OpenMusic API V3
+<div align="center">
 
+# 🎧 OpenMusic API V3
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-blue?style=for-the-badge)](https://openmusic-v3.asah-app.hamdiv.me/)
+</div>
 
 **Proyek: Open Music API Versi 3**
 

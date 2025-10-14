@@ -1,4 +1,8 @@
-# OpenMusic Consumer V3
+<div align="center">
+
+# 📨 OpenMusic V3 Consumer Service
+
+</div>
 
 Program consumer untuk menangani ekspor playlist dari OpenMusic API v3. Consumer ini menggunakan **RabbitMQ** untuk menerima pesan ekspor dan **Nodemailer** untuk mengirim hasil ekspor melalui email 📧.
 
@@ -35,6 +39,7 @@ openmusicv3-consumer/
       ├─ config.js            # Pembacaan environment variables
       └─ connection.js        # Koneksi RabbitMQ & helper koneksi DB
 ```
+
 ---
 
 ## 🚀 Instalasi

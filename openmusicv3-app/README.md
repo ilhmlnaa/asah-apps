@@ -1,4 +1,8 @@
+<div align="center">
+
 # 💻 OpenMusic API V3 APP
+
+</div>
 
 ## ✨ Fitur Utama
 
