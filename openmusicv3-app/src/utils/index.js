@@ -36,4 +36,38 @@ const mapDBToModelSong = ({
   updatedAt: updated_at,
 });
 
-module.exports = { mapDBToModelAlbum, mapDBToModelSong };
+const mapDBToModelPlaylist = ({ id, name, username }) => ({
+  id,
+  name,
+  username,
+});
+
+const mapDBToModelUser = ({ id, username, fullname }) => ({
+  id,
+  username,
+  fullname,
+});
+
+const mapDBToModelPlaylistActivity = ({
+  username, title, action, time,
+}) => ({
+  username,
+  title,
+  action,
+  time,
+});
+
+const mapDBToModelCollaboration = ({ id, playlist_id, user_id }) => ({
+  id,
+  playlistId: playlist_id,
+  userId: user_id,
+});
+
+module.exports = {
+  mapDBToModelAlbum,
+  mapDBToModelSong,
+  mapDBToModelPlaylist,
+  mapDBToModelUser,
+  mapDBToModelPlaylistActivity,
+  mapDBToModelCollaboration,
+};

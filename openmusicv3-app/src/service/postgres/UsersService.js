@@ -1,6 +1,7 @@
+const bcrypt = require('bcrypt');
 const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
-const bcrypt = require('bcrypt');
+const { mapDBToModelUser } = require('../../utils');
 const InvariantError = require('../../exceptions/InvariantError');
 const NotFoundError = require('../../exceptions/NotFoundError');
 const AuthenticationError = require('../../exceptions/AuthenticationError');
@@ -57,7 +58,7 @@ class UsersService {
       throw new NotFoundError('User tidak ditemukan');
     }
 
-    return result.rows[0];
+    return result.rows.map(mapDBToModelUser)[0];
   }
 
   async verifyUserCredential(username, password) {
@@ -90,7 +91,7 @@ class UsersService {
     };
 
     const result = await this._pool.query(query);
-    return result.rows;
+    return result.rows.map(mapDBToModelUser);
   }
 }
 

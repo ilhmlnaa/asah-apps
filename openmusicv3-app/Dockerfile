@@ -1,16 +1,21 @@
-FROM node:22-slim
+FROM node:22-alpine
 
 WORKDIR /app
 COPY package*.json ./
 
-RUN apt-get update && apt-get install -y postgresql-client && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache postgresql-client
 RUN npm ci --only=production \
   && npm install -g pm2 \
   && npm cache clean --force
 
 COPY . .
 
-RUN chmod +x docker-entrypoint.sh
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S appuser -u 1001
+
+RUN chown -R appuser:nodejs /app
+USER appuser
+RUN chmod +x ./docker-entrypoint.sh
 
 EXPOSE 5000
 
