@@ -21,6 +21,7 @@ class ExportsHandler {
     const message = {
       playlistId,
       targetEmail,
+      userId: credentialId,
     };
 
     await this._service.sendMessage(

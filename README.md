@@ -136,4 +136,4 @@ Gunakan collection Postman yang disediakan untuk testing API:
 
 ## 📜 Lisensi
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. **© Ilham**

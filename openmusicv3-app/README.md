@@ -320,12 +320,5 @@ Gunakan collection Postman yang disediakan untuk testing API:
 
 ## 📝 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. **© Ilham**
 
-## 👨‍💻 Developer
-
-**Ilham Maulana**
-
-- Mahasiswa Tingkat 4, Semester 7
-- Kelas: Belajar Fundamental Back-End dengan JavaScript
-- Submission: OpenMusic API versi 2

@@ -1,46 +1,46 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const Hapi = require("@hapi/hapi");
-const Jwt = require("@hapi/jwt");
+const Hapi = require('@hapi/hapi');
+const Jwt = require('@hapi/jwt');
 
-const albums = require("./api/albums");
-const AlbumsService = require("./service/postgres/AlbumsService");
-const AlbumsValidator = require("./validator/albums");
+const albums = require('./api/albums');
+const AlbumsService = require('./service/postgres/AlbumsService');
+const AlbumsValidator = require('./validator/albums');
 
-const songs = require("./api/songs");
-const SongsService = require("./service/postgres/SongsService");
-const SongsValidator = require("./validator/songs");
+const songs = require('./api/songs');
+const SongsService = require('./service/postgres/SongsService');
+const SongsValidator = require('./validator/songs');
 
-const users = require("./api/users");
-const UsersService = require("./service/postgres/UsersService");
-const UsersValidator = require("./validator/users");
+const users = require('./api/users');
+const UsersService = require('./service/postgres/UsersService');
+const UsersValidator = require('./validator/users');
 
-const authentications = require("./api/authentications");
-const AuthenticationsService = require("./service/postgres/AuthenticationsService");
-const TokenManager = require("./tokenize/TokenManager");
-const AuthenticationsValidator = require("./validator/authentications");
+const authentications = require('./api/authentications');
+const AuthenticationsService = require('./service/postgres/AuthenticationsService');
+const TokenManager = require('./tokenize/TokenManager');
+const AuthenticationsValidator = require('./validator/authentications');
 
-const playlists = require("./api/playlists");
-const PlaylistsService = require("./service/postgres/PlaylistsService");
-const PlaylistsValidator = require("./validator/playlists");
+const playlists = require('./api/playlists');
+const PlaylistsService = require('./service/postgres/PlaylistsService');
+const PlaylistsValidator = require('./validator/playlists');
 
-const collaborations = require("./api/collaborations");
-const CollaborationsService = require("./service/postgres/CollaborationsService");
-const CollaborationsValidator = require("./validator/collaborations");
+const collaborations = require('./api/collaborations');
+const CollaborationsService = require('./service/postgres/CollaborationsService');
+const CollaborationsValidator = require('./validator/collaborations');
 
-const _exports = require("./api/exports");
-const ProducerService = require("./service/rabbitmq/ProducerService");
-const ExportsValidator = require("./validator/exports");
+const _exports = require('./api/exports');
+const ProducerService = require('./service/rabbitmq/ProducerService');
+const ExportsValidator = require('./validator/exports');
 
-const uploads = require("./api/uploads");
-const StorageService = require("./service/storage/S3StorageService");
-const UploadsValidator = require("./validator/uploads");
+const uploads = require('./api/uploads');
+const StorageService = require('./service/storage/S3StorageService');
+const UploadsValidator = require('./validator/uploads');
 
-const CacheService = require("./service/redis/CacheService");
+const CacheService = require('./service/redis/CacheService');
 
-const config = require("./utils/config");
+const config = require('./utils/config');
 
-const ClientError = require("./exceptions/ClientError");
+const ClientError = require('./exceptions/ClientError');
 
 const init = async () => {
   const cacheService = new CacheService();
@@ -51,7 +51,7 @@ const init = async () => {
   const authenticationsService = new AuthenticationsService();
   const playlistsService = new PlaylistsService(
     collaborationsService,
-    cacheService
+    cacheService,
   );
   const storageService = new StorageService();
 
@@ -60,7 +60,7 @@ const init = async () => {
     host: config.app.host,
     routes: {
       cors: {
-        origin: ["*"],
+        origin: ['*'],
       },
     },
   });
@@ -71,7 +71,7 @@ const init = async () => {
     },
   ]);
 
-  server.auth.strategy("openmusicapp_jwt", "jwt", {
+  server.auth.strategy('openmusicapp_jwt', 'jwt', {
     keys: config.jwt.accessTokenKey,
     verify: {
       aud: false,
@@ -153,12 +153,12 @@ const init = async () => {
     },
   ]);
 
-  server.ext("onPreResponse", (request, h) => {
+  server.ext('onPreResponse', (request, h) => {
     const { response } = request;
 
     if (response instanceof ClientError) {
       const newResponse = h.response({
-        status: "fail",
+        status: 'fail',
         message: response.message,
       });
       newResponse.code(response.statusCode);
@@ -168,8 +168,8 @@ const init = async () => {
     if (response.isBoom) {
       if (response.output.statusCode === 401) {
         const newResponse = h.response({
-          status: "fail",
-          message: "Missing authentication",
+          status: 'fail',
+          message: 'Missing authentication',
         });
         newResponse.code(401);
         return newResponse;
@@ -177,7 +177,7 @@ const init = async () => {
 
       if (response.output.statusCode === 403) {
         const newResponse = h.response({
-          status: "fail",
+          status: 'fail',
           message: response.message,
         });
         newResponse.code(403);
@@ -185,11 +185,11 @@ const init = async () => {
       }
 
       if (
-        response.output.statusCode >= 400 &&
-        response.output.statusCode < 500
+        response.output.statusCode >= 400
+        && response.output.statusCode < 500
       ) {
         const newResponse = h.response({
-          status: "fail",
+          status: 'fail',
           message: response.message,
         });
         newResponse.code(response.output.statusCode);
@@ -197,8 +197,8 @@ const init = async () => {
       }
 
       const newResponse = h.response({
-        status: "error",
-        message: "Maaf, terjadi kegagalan pada server kami.",
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       newResponse.code(500);
       return newResponse;
