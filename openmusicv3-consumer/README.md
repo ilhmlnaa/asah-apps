@@ -1,4 +1,4 @@
-# 📨 OpenMusic API V3 Consumer
+# OpenMusic Consumer V3
 
 Program consumer untuk menangani ekspor playlist dari OpenMusic API v3. Consumer ini menggunakan **RabbitMQ** untuk menerima pesan ekspor dan **Nodemailer** untuk mengirim hasil ekspor melalui email 📧.
 
@@ -13,24 +13,31 @@ Program consumer untuk menangani ekspor playlist dari OpenMusic API v3. Consumer
 
 ---
 
-## �️ Struktur Project
+## 🗂️ Struktur Project
 
-```
+```text
 openmusicv3-consumer/
-├── src/                          # Source code
-│   ├── config.js                 # Configuration settings
-│   ├── consumer.js               # Main consumer application
-│   ├── listener.js               # RabbitMQ message listener
-│   ├── MailSender.js             # Email service handler
-│   └── PlaylistsService.js       # Database service for playlists
-├── Dockerfile                    # Docker image configuration
-├── package.json                  # NPM dependencies & scripts
-└── README.md                     # Project documentation
+├─ Dockerfile
+├─ package.json
+├─ package-lock.json
+├─ README.md
+└─ src/
+   ├─ index.js                # Entry point aplikasi consumer
+   ├─ consumer/
+   │  └─ ExportsConsumer.js   # Handler pesan export:playlists
+   ├─ exceptions/
+   │  └─ ClientError.js       # Kelas error untuk response terkontrol
+   ├─ service/
+   │  ├─ MailService.js       # Kirim email via Nodemailer
+   │  ├─ PlaylistsService.js  # Query playlist & lagu dari PostgreSQL
+   │  └─ UsersService.js      # Query data user dari PostgreSQL
+   └─ utils/
+      ├─ config.js            # Pembacaan environment variables
+      └─ connection.js        # Koneksi RabbitMQ & helper koneksi DB
 ```
-
 ---
 
-## �🚀 Instalasi
+## 🚀 Instalasi
 
 ### 1️⃣ Install Dependencies
 
@@ -148,14 +155,6 @@ Consumer akan menampilkan log untuk setiap pesan yang diproses. Pastikan untuk m
 
 ## 📝 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. **© Ilham**
 
 ---
-
-## 👨‍💻 Developer
-
-**Ilham Maulana**
-
-- 🎓 Mahasiswa Tingkat 4, Semester 7
-- 📚 Kelas: Belajar Fundamental Back-End dengan JavaScript
-- 📋 Submission: OpenMusic API versi 3

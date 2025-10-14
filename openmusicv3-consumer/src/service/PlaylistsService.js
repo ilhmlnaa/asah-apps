@@ -1,8 +1,19 @@
-const { Pool } = require('pg');
-
 class PlaylistsService {
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
+  }
+
+  async verifyPlaylistAccess(playlistId, userId) {
+    const query = {
+      text: 'SELECT id, owner FROM playlists WHERE id = $1',
+      values: [playlistId],
+    };
+
+    const result = await this._pool.query(query);
+
+    if (result.rows.length && result.rows[0].owner !== userId) {
+      throw new Error('Hanya pemilik playlist yang dapat mengakses');
+    }
   }
 
   async getPlaylistById(playlistId) {
