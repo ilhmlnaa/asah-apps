@@ -12,6 +12,7 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
 import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
@@ -21,6 +22,14 @@ import { JwtRefreshGuard } from '../common/guards/jwt-refresh.guard';
 import { LoginSchema } from './dtos/login.dto';
 import { RegisterSchema } from './dtos/register.dto';
 import { UpdateProfileSchema } from './dtos/update-profile.dto';
+import {
+  ApiUserRegister,
+  ApiUserLogin,
+  ApiTokenRefresh,
+  ApiUserLogout,
+  ApiCurrentUserProfile,
+  ApiUpdateUserProfile,
+} from './swagger';
 
 const cookieBase = {
   httpOnly: true,
@@ -30,6 +39,7 @@ const cookieBase = {
   path: '/',
 };
 
+@ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -38,6 +48,7 @@ export class AuthController {
   ) {}
 
   @Post('register')
+  @ApiUserRegister()
   @UsePipes(new ZodValidationPipe(RegisterSchema))
   async register(@Body() dto: any, @Res({ passthrough: true }) res: Response) {
     const hashed = await bcrypt.hash(dto.password, 10);
@@ -71,6 +82,7 @@ export class AuthController {
 
   @Post('login')
   @HttpCode(200)
+  @ApiUserLogin()
   @UsePipes(new ZodValidationPipe(LoginSchema))
   async login(@Body() dto: any, @Res({ passthrough: true }) res: Response) {
     const user = await this.auth.validateUser(dto.email, dto.password);
@@ -88,6 +100,7 @@ export class AuthController {
   }
 
   @Post('refresh')
+  @ApiTokenRefresh()
   @UseGuards(JwtRefreshGuard)
   async refresh(@Req() req, @Res({ passthrough: true }) res: Response) {
     const payload = req.user;
@@ -106,18 +119,21 @@ export class AuthController {
 
   @Delete('logout')
   @HttpCode(200)
+  @ApiUserLogout()
   async logout(@Res({ passthrough: true }) res: Response) {
     res.clearCookie('rt', { ...cookieBase });
     return { ok: true };
   }
 
   @Get('me')
+  @ApiCurrentUserProfile()
   @Auth()
   me(@Req() req) {
     return req.user;
   }
 
   @Patch('me')
+  @ApiUpdateUserProfile()
   @Auth()
   @UsePipes(new ZodValidationPipe(UpdateProfileSchema))
   async updateMe(@Req() req, @Body() dto: any) {
