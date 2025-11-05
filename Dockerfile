@@ -16,11 +16,12 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY prisma ./prisma/
-RUN npm ci
+RUN npm ci && npm cache clean --force
+RUN npm install -D @nestjs/cli
 
 COPY . .
 
-RUN npx prisma generate && npx nest build
+RUN npx prisma generate && npm run build
 
 # Stage 3: Production
 FROM base AS production
