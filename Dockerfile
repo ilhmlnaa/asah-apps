@@ -17,7 +17,6 @@ WORKDIR /app
 COPY package*.json ./
 COPY prisma ./prisma/
 RUN npm ci && npm cache clean --force
-RUN npm install -D @nestjs/cli
 
 COPY . .
 
@@ -37,7 +36,6 @@ COPY --from=builder --chown=nestjs:nodejs /app/prisma ./prisma
 COPY --from=builder --chown=nestjs:nodejs /app/generated ./generated
 COPY --chown=nestjs:nodejs package*.json ./
 
-ENV NODE_ENV=production
 ENV PORT=5000
 
 USER nestjs
