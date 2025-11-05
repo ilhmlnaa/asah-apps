@@ -20,8 +20,7 @@ RUN npm ci
 
 COPY . .
 
-RUN npx prisma generate && \
-    npm run build
+RUN npx prisma generate && npx nest build
 
 # Stage 3: Production
 FROM base AS production
