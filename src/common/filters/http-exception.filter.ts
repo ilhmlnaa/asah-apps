@@ -69,7 +69,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     this.logger.error(
       `HTTP ${status} ${req.method} ${req.url} -> ${errorPayload?.message}`,
-      exception?.stack,
+      // exception?.stack,
     );
 
     res.status(status).json({
