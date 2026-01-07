@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Filter } from "lucide-react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Filter } from 'lucide-react';
 
 function CategoryFilter({ categories, selectedCategory, onCategoryChange }) {
   return (
@@ -14,11 +14,11 @@ function CategoryFilter({ categories, selectedCategory, onCategoryChange }) {
       <div className="flex flex-wrap gap-2">
         <button
           type="button"
-          onClick={() => onCategoryChange("")}
+          onClick={() => onCategoryChange('')}
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            selectedCategory === ""
-              ? "bg-blue-600 text-white"
-              : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+            selectedCategory === ''
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
           }`}
         >
           All
@@ -30,8 +30,8 @@ function CategoryFilter({ categories, selectedCategory, onCategoryChange }) {
             onClick={() => onCategoryChange(category)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               selectedCategory === category
-                ? "bg-blue-600 text-white"
-                : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
             }`}
           >
             #{category}

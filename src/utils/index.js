@@ -19,7 +19,7 @@ function postedAt(date) {
   if (diffSeconds > 0) {
     return `${diffSeconds} detik yang lalu`;
   }
-  return "baru saja";
+  return 'baru saja';
 }
 
 function truncateText(text, maxLength) {
@@ -30,11 +30,11 @@ function truncateText(text, maxLength) {
 }
 
 function getTheme() {
-  return localStorage.getItem("theme") || "dark";
+  return localStorage.getItem('theme') || 'dark';
 }
 
 function setTheme(theme) {
-  localStorage.setItem("theme", theme);
+  localStorage.setItem('theme', theme);
 }
 
 export { postedAt, truncateText, getTheme, setTheme };

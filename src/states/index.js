@@ -1,12 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { loadingBarReducer } from "@dimasmds/react-redux-loading-bar";
-import authUserReducer from "./authUser/reducer";
-import isPreloadReducer from "./isPreload/reducer";
-import usersReducer from "./users/reducer";
-import threadsReducer from "./threads/reducer";
-import threadDetailReducer from "./threadDetail/reducer";
-import leaderboardsReducer from "./leaderboards/reducer";
-import themeReducer from "./theme/reducer";
+import { configureStore } from '@reduxjs/toolkit';
+import { loadingBarReducer } from '@dimasmds/react-redux-loading-bar';
+import authUserReducer from './authUser/reducer';
+import isPreloadReducer from './isPreload/reducer';
+import usersReducer from './users/reducer';
+import threadsReducer from './threads/reducer';
+import threadDetailReducer from './threadDetail/reducer';
+import leaderboardsReducer from './leaderboards/reducer';
+import themeReducer from './theme/reducer';
 
 const store = configureStore({
   reducer: {

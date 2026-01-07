@@ -1,12 +1,12 @@
-import { hideLoading, showLoading } from "@dimasmds/react-redux-loading-bar";
-import api from "../../utils/api";
+import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import api from '../../utils/api';
 
 const ActionType = {
-  RECEIVE_THREADS: "RECEIVE_THREADS",
-  ADD_THREAD: "ADD_THREAD",
-  UP_VOTE_THREAD: "UP_VOTE_THREAD",
-  DOWN_VOTE_THREAD: "DOWN_VOTE_THREAD",
-  NEUTRAL_VOTE_THREAD: "NEUTRAL_VOTE_THREAD",
+  RECEIVE_THREADS: 'RECEIVE_THREADS',
+  ADD_THREAD: 'ADD_THREAD',
+  UP_VOTE_THREAD: 'UP_VOTE_THREAD',
+  DOWN_VOTE_THREAD: 'DOWN_VOTE_THREAD',
+  NEUTRAL_VOTE_THREAD: 'NEUTRAL_VOTE_THREAD',
 };
 
 function receiveThreadsActionCreator(threads) {

@@ -1,11 +1,9 @@
-import { setTheme as setThemeToLocalStorage } from "../../utils";
-
 const ActionType = {
-  SET_THEME: "SET_THEME",
-  TOGGLE_THEME: "TOGGLE_THEME",
+  SET_THEME: 'SET_THEME',
 };
 
 function setThemeActionCreator(theme) {
+  localStorage.setItem('theme', theme);
   return {
     type: ActionType.SET_THEME,
     payload: {
@@ -15,31 +13,9 @@ function setThemeActionCreator(theme) {
 }
 
 function toggleThemeActionCreator() {
-  return {
-    type: ActionType.TOGGLE_THEME,
-  };
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  return setThemeActionCreator(newTheme);
 }
 
-function asyncSetTheme(theme) {
-  return (dispatch) => {
-    setThemeToLocalStorage(theme);
-    dispatch(setThemeActionCreator(theme));
-  };
-}
-
-function asyncToggleTheme() {
-  return (dispatch, getState) => {
-    const { theme } = getState();
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setThemeToLocalStorage(newTheme);
-    dispatch(toggleThemeActionCreator());
-  };
-}
-
-export {
-  ActionType,
-  setThemeActionCreator,
-  toggleThemeActionCreator,
-  asyncSetTheme,
-  asyncToggleTheme,
-};
+export { ActionType, setThemeActionCreator, toggleThemeActionCreator };

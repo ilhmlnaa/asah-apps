@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Mail, Lock } from "lucide-react";
-import useInput from "../../hooks/useInput";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Mail, Lock } from 'lucide-react';
+import useInput from '../../hooks/useInput';
 
 function LoginInput({ login }) {
-  const [email, onEmailChange] = useInput("");
-  const [password, onPasswordChange] = useInput("");
+  const [email, onEmailChange] = useInput('');
+  const [password, onPasswordChange] = useInput('');
 
   const onSubmit = (e) => {
     e.preventDefault();

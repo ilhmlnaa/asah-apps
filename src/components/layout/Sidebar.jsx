@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { Trophy, TrendingUp, Tag } from "lucide-react";
-import { asyncReceiveLeaderboards } from "../../states/leaderboards/action";
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Trophy, TrendingUp, Tag } from 'lucide-react';
+import { asyncReceiveLeaderboards } from '../../states/leaderboards/action';
 
 function Sidebar({ categories, selectedCategory, onCategoryChange }) {
   const dispatch = useDispatch();
@@ -81,8 +81,8 @@ function Sidebar({ categories, selectedCategory, onCategoryChange }) {
                 onClick={() => onCategoryChange(category)}
                 className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   selectedCategory === category
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
                 #{category}

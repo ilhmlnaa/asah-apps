@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { Home, Trophy, LogOut, Moon, Sun } from "lucide-react";
-import { asyncLogoutUser } from "../../states/shared/action";
-import { asyncToggleTheme } from "../../states/theme/action";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Home, Trophy, LogOut, Moon, Sun } from 'lucide-react';
+import { asyncLogoutUser } from '../../states/shared/action';
+import { toggleThemeActionCreator } from '../../states/theme/action';
 
 function Navigation({ authUser, theme }) {
   const dispatch = useDispatch();
@@ -12,11 +12,11 @@ function Navigation({ authUser, theme }) {
 
   const onLogout = () => {
     dispatch(asyncLogoutUser());
-    navigate("/");
+    navigate('/');
   };
 
   const onToggleTheme = () => {
-    dispatch(asyncToggleTheme());
+    dispatch(toggleThemeActionCreator());
   };
 
   return (
@@ -55,7 +55,7 @@ function Navigation({ authUser, theme }) {
               className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? (
+              {theme === 'dark' ? (
                 <Sun className="w-5 h-5" />
               ) : (
                 <Moon className="w-5 h-5" />

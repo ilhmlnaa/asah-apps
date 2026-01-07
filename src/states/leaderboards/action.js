@@ -1,8 +1,8 @@
-import { hideLoading, showLoading } from "@dimasmds/react-redux-loading-bar";
-import api from "../../utils/api";
+import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import api from '../../utils/api';
 
 const ActionType = {
-  RECEIVE_LEADERBOARDS: "RECEIVE_LEADERBOARDS",
+  RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARDS',
 };
 
 function receiveLeaderboardsActionCreator(leaderboards) {

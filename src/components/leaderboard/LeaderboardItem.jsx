@@ -1,22 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Trophy, Medal, Award } from "lucide-react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Trophy, Medal, Award } from 'lucide-react';
 
 function LeaderboardItem({ user, score, rank }) {
   const getRankIcon = () => {
     switch (rank) {
-      case 1:
-        return <Trophy className="w-6 h-6 text-yellow-500" />;
-      case 2:
-        return <Medal className="w-6 h-6 text-gray-400" />;
-      case 3:
-        return <Award className="w-6 h-6 text-amber-600" />;
-      default:
-        return (
-          <div className="w-6 h-6 flex items-center justify-center text-gray-500 dark:text-gray-400 font-semibold">
-            {rank}
-          </div>
-        );
+    case 1:
+      return <Trophy className="w-6 h-6 text-yellow-500" />;
+    case 2:
+      return <Medal className="w-6 h-6 text-gray-400" />;
+    case 3:
+      return <Award className="w-6 h-6 text-amber-600" />;
+    default:
+      return (
+        <div className="w-6 h-6 flex items-center justify-center text-gray-500 dark:text-gray-400 font-semibold">
+          {rank}
+        </div>
+      );
     }
   };
 

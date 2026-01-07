@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { ThumbsUp, ThumbsDown } from "lucide-react";
-import { postedAt } from "../../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ThumbsUp, ThumbsDown } from 'lucide-react';
+import { postedAt } from '../../utils';
 
 function CommentItem({
   id,
@@ -20,7 +20,7 @@ function CommentItem({
 
   const onUpVote = () => {
     if (!authUser) {
-      alert("Please login to vote");
+      alert('Please login to vote');
       return;
     }
     if (isUpVoted) {
@@ -32,7 +32,7 @@ function CommentItem({
 
   const onDownVote = () => {
     if (!authUser) {
-      alert("Please login to vote");
+      alert('Please login to vote');
       return;
     }
     if (isDownVoted) {
@@ -72,13 +72,13 @@ function CommentItem({
               onClick={onUpVote}
               className={`flex items-center space-x-1 transition-colors ${
                 isUpVoted
-                  ? "text-blue-600 dark:text-blue-400"
-                  : "text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+                  ? 'text-blue-600 dark:text-blue-400'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400'
               }`}
             >
               <ThumbsUp
                 className="w-4 h-4"
-                fill={isUpVoted ? "currentColor" : "none"}
+                fill={isUpVoted ? 'currentColor' : 'none'}
               />
               <span className="text-xs font-medium">{upVotesBy.length}</span>
             </button>
@@ -88,13 +88,13 @@ function CommentItem({
               onClick={onDownVote}
               className={`flex items-center space-x-1 transition-colors ${
                 isDownVoted
-                  ? "text-red-600 dark:text-red-400"
-                  : "text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400"
+                  ? 'text-red-600 dark:text-red-400'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400'
               }`}
             >
               <ThumbsDown
                 className="w-4 h-4"
-                fill={isDownVoted ? "currentColor" : "none"}
+                fill={isDownVoted ? 'currentColor' : 'none'}
               />
               <span className="text-xs font-medium">{downVotesBy.length}</span>
             </button>

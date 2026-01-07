@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { PlusCircle } from "lucide-react";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { PlusCircle } from 'lucide-react';
 import {
   ThreadsList,
   ThreadInput,
   CategoryFilter,
   Sidebar,
-} from "../components";
-import { asyncPopulateUsersAndThreads } from "../states/shared/action";
+} from '../components';
+import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 import {
   asyncCreateThread,
   asyncUpVoteThread,
   asyncDownVoteThread,
   asyncNeutralVoteThread,
-} from "../states/threads/action";
+} from '../states/threads/action';
 
 function HomePage() {
   const {
@@ -24,7 +24,7 @@ function HomePage() {
 
   const dispatch = useDispatch();
   const [showThreadInput, setShowThreadInput] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads());
@@ -47,7 +47,7 @@ function HomePage() {
 
   const onAddThread = ({ title, body, category }) => {
     if (!authUser) {
-      alert("Please login to create a thread");
+      alert('Please login to create a thread');
       return;
     }
 
@@ -74,7 +74,7 @@ function HomePage() {
 
   const onToggleThreadInput = () => {
     if (!authUser) {
-      alert("Please login to create a thread");
+      alert('Please login to create a thread');
       return;
     }
     setShowThreadInput(!showThreadInput);
@@ -121,8 +121,8 @@ function HomePage() {
               <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-md">
                 <p className="text-gray-500 dark:text-gray-400 text-lg">
                   {selectedCategory
-                    ? "No threads found in this category."
-                    : "No threads yet. Be the first to create one!"}
+                    ? 'No threads found in this category.'
+                    : 'No threads yet. Be the first to create one!'}
                 </p>
               </div>
             ) : (

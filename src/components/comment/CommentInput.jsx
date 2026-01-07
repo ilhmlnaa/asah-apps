@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Send } from "lucide-react";
-import useInput from "../../hooks/useInput";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Send } from 'lucide-react';
+import useInput from '../../hooks/useInput';
 
 function CommentInput({ addComment }) {
-  const [content, onContentChange, setContent] = useInput("");
+  const [content, onContentChange, setContent] = useInput('');
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (content.trim()) {
       addComment(content);
-      setContent("");
+      setContent('');
     }
   };
 

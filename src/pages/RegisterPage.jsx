@@ -1,8 +1,8 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { RegisterInput } from "../components";
-import { asyncRegisterUser } from "../states/shared/action";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { RegisterInput } from '../components';
+import { asyncRegisterUser } from '../states/shared/action';
 
 function RegisterPage() {
   const dispatch = useDispatch();
@@ -11,8 +11,8 @@ function RegisterPage() {
   const onRegister = ({ name, email, password }) => {
     dispatch(asyncRegisterUser({ name, email, password }))
       .then(() => {
-        alert("Registration successful! Please login.");
-        navigate("/login");
+        alert('Registration successful! Please login.');
+        navigate('/login');
       })
       .catch(() => {
         // Error already handled in action
@@ -39,7 +39,7 @@ function RegisterPage() {
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Already have an account?{" "}
+              Already have an account?{' '}
               <Link
                 to="/login"
                 className="font-medium text-blue-600 dark:text-blue-500 hover:text-blue-500 dark:hover:text-blue-400"

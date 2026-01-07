@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { ThumbsUp, ThumbsDown, MessageCircle } from "lucide-react";
-import { postedAt } from "../../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { ThumbsUp, ThumbsDown, MessageCircle } from 'lucide-react';
+import { postedAt } from '../../utils';
 
 function ThreadItem({
   id,
@@ -27,7 +27,7 @@ function ThreadItem({
   const onUpVote = (e) => {
     e.stopPropagation();
     if (!authUser) {
-      alert("Please login to vote");
+      alert('Please login to vote');
       return;
     }
     if (isUpVoted) {
@@ -40,7 +40,7 @@ function ThreadItem({
   const onDownVote = (e) => {
     e.stopPropagation();
     if (!authUser) {
-      alert("Please login to vote");
+      alert('Please login to vote');
       return;
     }
     if (isDownVoted) {
@@ -55,7 +55,7 @@ function ThreadItem({
   };
 
   const onThreadPress = (e) => {
-    if (e.key === "Enter" || e.key === " ") {
+    if (e.key === 'Enter' || e.key === ' ') {
       navigate(`/threads/${id}`);
     }
   };
@@ -106,13 +106,13 @@ function ThreadItem({
               onClick={onUpVote}
               className={`flex items-center space-x-2 transition-colors ${
                 isUpVoted
-                  ? "text-blue-600 dark:text-blue-400"
-                  : "text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+                  ? 'text-blue-600 dark:text-blue-400'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400'
               }`}
             >
               <ThumbsUp
                 className="w-5 h-5"
-                fill={isUpVoted ? "currentColor" : "none"}
+                fill={isUpVoted ? 'currentColor' : 'none'}
               />
               <span className="text-sm font-medium">{upVotesBy.length}</span>
             </button>
@@ -122,13 +122,13 @@ function ThreadItem({
               onClick={onDownVote}
               className={`flex items-center space-x-2 transition-colors ${
                 isDownVoted
-                  ? "text-red-600 dark:text-red-400"
-                  : "text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400"
+                  ? 'text-red-600 dark:text-red-400'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400'
               }`}
             >
               <ThumbsDown
                 className="w-5 h-5"
-                fill={isDownVoted ? "currentColor" : "none"}
+                fill={isDownVoted ? 'currentColor' : 'none'}
               />
               <span className="text-sm font-medium">{downVotesBy.length}</span>
             </button>

@@ -1,8 +1,8 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { LoginInput } from "../components";
-import { asyncLoginUser } from "../states/shared/action";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { LoginInput } from '../components';
+import { asyncLoginUser } from '../states/shared/action';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ function LoginPage() {
   const onLogin = ({ email, password }) => {
     dispatch(asyncLoginUser({ email, password }))
       .then(() => {
-        navigate("/");
+        navigate('/');
       })
       .catch(() => {
         // Error already handled in action
@@ -38,7 +38,7 @@ function LoginPage() {
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Don&apos;t have an account?{" "}
+              Don&apos;t have an account?{' '}
               <Link
                 to="/register"
                 className="font-medium text-blue-600 dark:text-blue-500 hover:text-blue-500 dark:hover:text-blue-400"

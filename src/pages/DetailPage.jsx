@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { ArrowLeft, ThumbsUp, ThumbsDown, MessageCircle } from "lucide-react";
-import { CommentInput, CommentsList } from "../components";
-import { postedAt } from "../utils";
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { ArrowLeft, ThumbsUp, ThumbsDown, MessageCircle } from 'lucide-react';
+import { CommentInput, CommentsList } from '../components';
+import { postedAt } from '../utils';
 import {
   asyncReceiveThreadDetail,
   asyncCreateComment,
@@ -13,7 +13,7 @@ import {
   asyncUpVoteComment,
   asyncDownVoteComment,
   asyncNeutralVoteComment,
-} from "../states/threadDetail/action";
+} from '../states/threadDetail/action';
 
 function DetailPage() {
   const { id } = useParams();
@@ -45,7 +45,7 @@ function DetailPage() {
 
   const onAddComment = (content) => {
     if (!authUser) {
-      alert("Please login to comment");
+      alert('Please login to comment');
       return;
     }
 
@@ -56,7 +56,7 @@ function DetailPage() {
 
   const onUpVoteThread = () => {
     if (!authUser) {
-      alert("Please login to vote");
+      alert('Please login to vote');
       return;
     }
     if (isUpVoted) {
@@ -68,7 +68,7 @@ function DetailPage() {
 
   const onDownVoteThread = () => {
     if (!authUser) {
-      alert("Please login to vote");
+      alert('Please login to vote');
       return;
     }
     if (isDownVoted) {
@@ -95,7 +95,7 @@ function DetailPage() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <button
           type="button"
-          onClick={() => navigate("/")}
+          onClick={() => navigate('/')}
           className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-6 transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
@@ -143,13 +143,13 @@ function DetailPage() {
               onClick={onUpVoteThread}
               className={`flex items-center space-x-2 transition-colors ${
                 isUpVoted
-                  ? "text-blue-600 dark:text-blue-400"
-                  : "text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+                  ? 'text-blue-600 dark:text-blue-400'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400'
               }`}
             >
               <ThumbsUp
                 className="w-5 h-5"
-                fill={isUpVoted ? "currentColor" : "none"}
+                fill={isUpVoted ? 'currentColor' : 'none'}
               />
               <span className="text-sm font-medium">
                 {threadDetail.upVotesBy.length}
@@ -161,13 +161,13 @@ function DetailPage() {
               onClick={onDownVoteThread}
               className={`flex items-center space-x-2 transition-colors ${
                 isDownVoted
-                  ? "text-red-600 dark:text-red-400"
-                  : "text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400"
+                  ? 'text-red-600 dark:text-red-400'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400'
               }`}
             >
               <ThumbsDown
                 className="w-5 h-5"
-                fill={isDownVoted ? "currentColor" : "none"}
+                fill={isDownVoted ? 'currentColor' : 'none'}
               />
               <span className="text-sm font-medium">
                 {threadDetail.downVotesBy.length}

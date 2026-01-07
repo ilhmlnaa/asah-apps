@@ -1,12 +1,12 @@
-import { hideLoading, showLoading } from "@dimasmds/react-redux-loading-bar";
-import api from "../../utils/api";
-import { receiveThreadsActionCreator } from "../threads/action";
-import { receiveUsersActionCreator } from "../users/action";
+import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import api from '../../utils/api';
+import { receiveThreadsActionCreator } from '../threads/action';
+import { receiveUsersActionCreator } from '../users/action';
 import {
   setAuthUserActionCreator,
   unsetAuthUserActionCreator,
-} from "../authUser/action";
-import { setIsPreloadActionCreator } from "../isPreload/action";
+} from '../authUser/action';
+import { setIsPreloadActionCreator } from '../isPreload/action';
 
 function asyncPopulateUsersAndThreads() {
   return async (dispatch) => {

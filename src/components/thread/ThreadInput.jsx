@@ -1,19 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { X } from "lucide-react";
-import useInput from "../../hooks/useInput";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { X } from 'lucide-react';
+import useInput from '../../hooks/useInput';
 
 function ThreadInput({ addThread, onCancel }) {
-  const [title, onTitleChange, setTitle] = useInput("");
-  const [body, onBodyChange, setBody] = useInput("");
-  const [category, onCategoryChange, setCategory] = useInput("");
+  const [title, onTitleChange, setTitle] = useInput('');
+  const [body, onBodyChange, setBody] = useInput('');
+  const [category, onCategoryChange, setCategory] = useInput('');
 
   const onSubmit = (e) => {
     e.preventDefault();
     addThread({ title, body, category });
-    setTitle("");
-    setBody("");
-    setCategory("");
+    setTitle('');
+    setBody('');
+    setCategory('');
   };
 
   return (

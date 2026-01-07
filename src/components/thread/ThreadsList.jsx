@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ThreadItem from "./ThreadItem";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ThreadItem from './ThreadItem';
 
 function ThreadsList({ threads, authUser, upVote, downVote, neutralVote }) {
   return (

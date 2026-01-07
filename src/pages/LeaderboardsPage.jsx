@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Trophy } from "lucide-react";
-import { LeaderboardItem } from "../components";
-import { asyncReceiveLeaderboards } from "../states/leaderboards/action";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Trophy } from 'lucide-react';
+import { LeaderboardItem } from '../components';
+import { asyncReceiveLeaderboards } from '../states/leaderboards/action';
 
 function LeaderboardsPage() {
   const { leaderboards = [] } = useSelector((states) => states);

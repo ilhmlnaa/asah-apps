@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import CommentItem from "./CommentItem";
+import React from 'react';
+import PropTypes from 'prop-types';
+import CommentItem from './CommentItem';
 
 function CommentsList({ comments, authUser, upVote, downVote, neutralVote }) {
   if (comments.length === 0) {

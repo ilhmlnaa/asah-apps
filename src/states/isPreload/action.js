@@ -1,5 +1,5 @@
 const ActionType = {
-  SET_IS_PRELOAD: "SET_IS_PRELOAD",
+  SET_IS_PRELOAD: 'SET_IS_PRELOAD',
 };
 
 function setIsPreloadActionCreator(isPreload) {
