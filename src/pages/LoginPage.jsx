@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { LoginInput } from '../components';
+import { LoginInput, PageTransition } from '../components';
 import { asyncLoginUser } from '../states/shared/action';
 
 function LoginPage() {
@@ -19,7 +19,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <PageTransition className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-blue-600 dark:text-blue-500 mb-2">
@@ -49,7 +49,7 @@ function LoginPage() {
           </div>
         </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }
 

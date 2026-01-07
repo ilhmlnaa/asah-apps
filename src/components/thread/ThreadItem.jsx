@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { ThumbsUp, ThumbsDown, MessageCircle } from 'lucide-react';
 import { postedAt } from '../../utils';
 
@@ -61,12 +62,15 @@ function ThreadItem({
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -5 }}
       onClick={onThreadClick}
       onKeyDown={onThreadPress}
       role="button"
       tabIndex={0}
-      className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer p-6 mb-4"
+      className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer p-6 mb-4 border border-transparent hover:border-blue-100 dark:hover:border-blue-900"
     >
       <div className="flex items-start space-x-4">
         <img
@@ -140,7 +144,7 @@ function ThreadItem({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

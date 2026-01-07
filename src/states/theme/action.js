@@ -1,9 +1,9 @@
 const ActionType = {
   SET_THEME: 'SET_THEME',
+  TOGGLE_THEME: 'TOGGLE_THEME',
 };
 
 function setThemeActionCreator(theme) {
-  localStorage.setItem('theme', theme);
   return {
     type: ActionType.SET_THEME,
     payload: {
@@ -13,9 +13,9 @@ function setThemeActionCreator(theme) {
 }
 
 function toggleThemeActionCreator() {
-  const currentTheme = localStorage.getItem('theme') || 'dark';
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  return setThemeActionCreator(newTheme);
+  return {
+    type: ActionType.TOGGLE_THEME,
+  };
 }
 
 export { ActionType, setThemeActionCreator, toggleThemeActionCreator };

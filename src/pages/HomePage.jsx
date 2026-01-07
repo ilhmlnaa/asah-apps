@@ -6,6 +6,7 @@ import {
   ThreadInput,
   CategoryFilter,
   Sidebar,
+  PageTransition,
 } from '../components';
 import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 import {
@@ -81,74 +82,76 @@ function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Main Content */}
-          <div className="lg:col-span-2">
-            <div className="flex justify-between items-center mb-6">
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-                Discussions
-              </h1>
-              {authUser && !showThreadInput && (
-                <button
-                  type="button"
-                  onClick={onToggleThreadInput}
-                  className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
-                >
-                  <PlusCircle className="w-5 h-5" />
-                  <span className="hidden sm:inline">New Thread</span>
-                </button>
+    <PageTransition>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Main Content */}
+            <div className="lg:col-span-2">
+              <div className="flex justify-between items-center mb-6">
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                  Discussions
+                </h1>
+                {authUser && !showThreadInput && (
+                  <button
+                    type="button"
+                    onClick={onToggleThreadInput}
+                    className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                  >
+                    <PlusCircle className="w-5 h-5" />
+                    <span className="hidden sm:inline">New Thread</span>
+                  </button>
+                )}
+              </div>
+
+              {showThreadInput && (
+                <ThreadInput
+                  addThread={onAddThread}
+                  onCancel={() => setShowThreadInput(false)}
+                />
+              )}
+
+              {categories.length > 0 && (
+                <CategoryFilter
+                  categories={categories}
+                  selectedCategory={selectedCategory}
+                  onCategoryChange={setSelectedCategory}
+                />
+              )}
+
+              {filteredThreads.length === 0 ? (
+                <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                  <p className="text-gray-500 dark:text-gray-400 text-lg">
+                    {selectedCategory
+                      ? 'No threads found in this category.'
+                      : 'No threads yet. Be the first to create one!'}
+                  </p>
+                </div>
+              ) : (
+                <ThreadsList
+                  threads={filteredThreads}
+                  authUser={authUser}
+                  upVote={onUpVote}
+                  downVote={onDownVote}
+                  neutralVote={onNeutralVote}
+                />
               )}
             </div>
 
-            {showThreadInput && (
-              <ThreadInput
-                addThread={onAddThread}
-                onCancel={() => setShowThreadInput(false)}
-              />
-            )}
-
-            {categories.length > 0 && (
-              <CategoryFilter
-                categories={categories}
-                selectedCategory={selectedCategory}
-                onCategoryChange={setSelectedCategory}
-              />
-            )}
-
-            {filteredThreads.length === 0 ? (
-              <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-                <p className="text-gray-500 dark:text-gray-400 text-lg">
-                  {selectedCategory
-                    ? 'No threads found in this category.'
-                    : 'No threads yet. Be the first to create one!'}
-                </p>
+            {/* Sidebar */}
+            <div className="hidden lg:block">
+              <div className="sticky top-20">
+                <Sidebar
+                  categories={categories}
+                  selectedCategory={selectedCategory}
+                  onCategoryChange={setSelectedCategory}
+                />
               </div>
-            ) : (
-              <ThreadsList
-                threads={filteredThreads}
-                authUser={authUser}
-                upVote={onUpVote}
-                downVote={onDownVote}
-                neutralVote={onNeutralVote}
-              />
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <div className="hidden lg:block">
-            <div className="sticky top-20">
-              <Sidebar
-                categories={categories}
-                selectedCategory={selectedCategory}
-                onCategoryChange={setSelectedCategory}
-              />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }
 

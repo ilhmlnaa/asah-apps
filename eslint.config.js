@@ -27,5 +27,10 @@ export default [
       'react-hooks/exhaustive-deps': 'warn',
       'react/jsx-props-no-spreading': 'off',
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
   },
 ];

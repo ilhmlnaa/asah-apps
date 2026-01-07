@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
 import { Navigation, Loading, Footer } from './components';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
@@ -18,6 +19,7 @@ function App() {
   } = useSelector((states) => states);
 
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
@@ -29,6 +31,7 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    localStorage.setItem('theme', theme);
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
@@ -44,26 +47,32 @@ function App() {
     return (
       <>
         <Loading />
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </AnimatePresence>
       </>
     );
   }
 
   return (
     <>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col transition-colors duration-300">
         <Navigation authUser={authUser} theme={theme} />
         <Loading />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/threads/:id" element={<DetailPage />} />
-          <Route path="/leaderboards" element={<LeaderboardsPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <main className="flex-1">
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/threads/:id" element={<DetailPage />} />
+              <Route path="/leaderboards" element={<LeaderboardsPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </AnimatePresence>
+        </main>
         <Footer />
       </div>
     </>

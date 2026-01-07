@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { motion } from 'framer-motion';
 import { Home, Trophy, LogOut, Moon, Sun } from 'lucide-react';
 import { asyncLogoutUser } from '../../states/shared/action';
 import { toggleThemeActionCreator } from '../../states/theme/action';
@@ -49,7 +50,9 @@ function Navigation({ authUser, theme }) {
           </div>
 
           <div className="flex items-center space-x-4">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               type="button"
               onClick={onToggleTheme}
               className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -60,7 +63,7 @@ function Navigation({ authUser, theme }) {
               ) : (
                 <Moon className="w-5 h-5" />
               )}
-            </button>
+            </motion.button>
 
             {authUser && (
               <div className="flex items-center space-x-3">
@@ -74,14 +77,16 @@ function Navigation({ authUser, theme }) {
                     {authUser.name}
                   </span>
                 </div>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   type="button"
                   onClick={onLogout}
                   className="flex items-center space-x-2 px-3 py-2 rounded-lg text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                 >
                   <LogOut className="w-5 h-5" />
                   <span className="hidden sm:inline">Logout</span>
-                </button>
+                </motion.button>
               </div>
             )}
           </div>

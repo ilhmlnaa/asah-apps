@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 import { Trophy, TrendingUp, Tag } from 'lucide-react';
 import { asyncReceiveLeaderboards } from '../../states/leaderboards/action';
 
@@ -16,7 +17,12 @@ function Sidebar({ categories, selectedCategory, onCategoryChange }) {
   const topLeaderboards = leaderboards.slice(0, 5);
 
   return (
-    <div className="space-y-6">
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.2 }}
+      className="space-y-6"
+    >
       {/* Top Contributors */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <div className="flex items-center justify-between mb-4">
@@ -108,7 +114,7 @@ function Sidebar({ categories, selectedCategory, onCategoryChange }) {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
