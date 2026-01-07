@@ -103,8 +103,9 @@ function asyncReceiveThreadDetail(threadId) {
       dispatch(receiveThreadDetailActionCreator(threadDetail));
     } catch (error) {
       alert(error.message);
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -117,8 +118,9 @@ function asyncCreateComment({ threadId, content }) {
     } catch (error) {
       alert(error.message);
       throw error;
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 

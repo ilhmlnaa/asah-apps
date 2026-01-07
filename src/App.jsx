@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { Navigation, Loading, Footer } from "./components";
-import HomePage from "./pages/HomePage";
-import DetailPage from "./pages/DetailPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import LeaderboardsPage from "./pages/LeaderboardsPage";
-import { asyncPreloadProcess } from "./states/shared/action";
-import { setThemeActionCreator } from "./states/theme/action";
+import React, { useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Navigation, Loading, Footer } from './components';
+import HomePage from './pages/HomePage';
+import DetailPage from './pages/DetailPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import LeaderboardsPage from './pages/LeaderboardsPage';
+import { asyncPreloadProcess } from './states/shared/action';
+import { setThemeActionCreator } from './states/theme/action';
 
 function App() {
   const {
     authUser = null,
     isPreload = false,
-    theme = "dark",
+    theme = 'dark',
   } = useSelector((states) => states);
 
   const dispatch = useDispatch();
@@ -24,15 +24,15 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     dispatch(setThemeActionCreator(savedTheme));
   }, [dispatch]);
 
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove('dark');
     }
   }, [theme]);
 

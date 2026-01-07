@@ -19,8 +19,9 @@ function asyncPopulateUsersAndThreads() {
       dispatch(receiveThreadsActionCreator(threads));
     } catch (error) {
       alert(error.message);
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -29,7 +30,7 @@ function asyncPreloadProcess() {
     try {
       const authUser = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
-    } catch (error) {
+    } catch {
       dispatch(setAuthUserActionCreator(null));
     } finally {
       dispatch(setIsPreloadActionCreator(false));
@@ -45,8 +46,9 @@ function asyncRegisterUser({ name, email, password }) {
     } catch (error) {
       alert(error.message);
       throw error;
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -62,8 +64,9 @@ function asyncLoginUser({ email, password }) {
     } catch (error) {
       alert(error.message);
       throw error;
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 

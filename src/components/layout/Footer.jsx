@@ -1,5 +1,5 @@
-import React from "react";
-import { Heart, Github, Linkedin } from "lucide-react";
+import React from 'react';
+import { Heart, Github, Linkedin } from 'lucide-react';
 
 function Footer() {
   return (
@@ -71,8 +71,8 @@ function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
           <p className="text-center text-gray-600 dark:text-gray-400 text-sm flex items-center justify-center">
-            Made with{" "}
-            <Heart className="w-4 h-4 mx-1 text-red-500" fill="currentColor" />{" "}
+            Made with{' '}
+            <Heart className="w-4 h-4 mx-1 text-red-500" fill="currentColor" />{' '}
             for Dicoding Submission
             <span className="mx-2">•</span>© 2025 Forum Diskusi
           </p>

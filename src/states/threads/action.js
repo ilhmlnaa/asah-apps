@@ -66,8 +66,9 @@ function asyncCreateThread({ title, body, category }) {
     } catch (error) {
       alert(error.message);
       throw error;
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
