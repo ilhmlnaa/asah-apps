@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { ThumbsUp, ThumbsDown, MessageCircle } from "lucide-react";
-import { postedAt } from "../utils";
+import { postedAt } from "../../utils";
 
 function ThreadItem({
   id,

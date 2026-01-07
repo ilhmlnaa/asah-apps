@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { X } from "lucide-react";
-import useInput from "../hooks/useInput";
+import useInput from "../../hooks/useInput";
 
 function ThreadInput({ addThread, onCancel }) {
   const [title, onTitleChange, setTitle] = useInput("");

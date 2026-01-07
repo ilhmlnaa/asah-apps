@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ArrowLeft, ThumbsUp, ThumbsDown, MessageCircle } from "lucide-react";
-import CommentInput from "../components/CommentInput";
-import CommentsList from "../components/CommentsList";
+import { CommentInput, CommentsList } from "../components";
 import { postedAt } from "../utils";
 import {
   asyncReceiveThreadDetail,

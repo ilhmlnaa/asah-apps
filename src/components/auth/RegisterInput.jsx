@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { User, Mail, Lock } from "lucide-react";
-import useInput from "../hooks/useInput";
+import useInput from "../../hooks/useInput";
 
 function RegisterInput({ register }) {
   const [name, onNameChange] = useInput("");

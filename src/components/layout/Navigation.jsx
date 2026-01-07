@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Home, Trophy, LogOut, Moon, Sun } from "lucide-react";
-import { asyncLogoutUser } from "../states/shared/action";
-import { asyncToggleTheme } from "../states/theme/action";
+import { asyncLogoutUser } from "../../states/shared/action";
+import { asyncToggleTheme } from "../../states/theme/action";
 
 function Navigation({ authUser, theme }) {
   const dispatch = useDispatch();

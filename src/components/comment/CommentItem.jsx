@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
-import { postedAt } from "../utils";
+import { postedAt } from "../../utils";
 
 function CommentItem({
   id,

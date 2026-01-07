@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import LoginInput from "../components/LoginInput";
+import { LoginInput } from "../components";
 import { asyncLoginUser } from "../states/shared/action";
 
 function LoginPage() {
