@@ -118,6 +118,10 @@ function Navigation({ authUser, theme }) {
                 )}
               </motion.button>
 
+              <div className="hidden md:block">
+                <LanguageSwitcher />
+              </div>
+
               {authUser && (
                 <div className="flex items-center ml-2">
                   <img
@@ -134,8 +138,6 @@ function Navigation({ authUser, theme }) {
 
             {/* Desktop Auth and Language Buttons */}
             <div className="hidden md:flex items-center space-x-4 ml-4">
-              <LanguageSwitcher />
-
               {authUser ? (
                 <motion.button
                   whileHover={{ scale: isLoggingOut ? 1 : 1.05 }}

@@ -90,7 +90,7 @@ function Footer() {
             <Heart className="w-4 h-4 mx-1 text-red-500 animate-pulse" fill="currentColor" />{' '}
             by <span className="font-bold ml-1 text-gray-900 dark:text-white">Ilham</span>
           </div>
-          <p>© 2025 {t('navigation.forumApp')}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {t('navigation.forumApp')}. All rights reserved.</p>
         </div>
       </div>
     </footer>
