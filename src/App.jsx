@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
@@ -10,6 +10,7 @@ import DetailPage from './pages/DetailPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LeaderboardsPage from './pages/LeaderboardsPage';
+import NotFoundPage from './pages/NotFoundPage';
 import { asyncPreloadProcess } from './states/shared/action';
 import { setThemeActionCreator } from './states/theme/action';
 import { setLanguageActionCreator } from './states/language/action';
@@ -61,7 +62,9 @@ function App() {
     <>
       <Toaster />
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col transition-colors duration-300">
-        {!isAuthPage && <Navigation authUser={authUser} theme={theme} language={language} />}
+        {!isAuthPage && (
+          <Navigation authUser={authUser} theme={theme} language={language} />
+        )}
         <Loading />
         <main className="flex-1">
           <AnimatePresence mode="wait">
@@ -75,7 +78,7 @@ function App() {
                   <Route path="/register" element={<RegisterPage />} />
                 </>
               )}
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </AnimatePresence>
         </main>

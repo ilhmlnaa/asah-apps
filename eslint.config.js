@@ -6,6 +6,9 @@ import pluginHooks from 'eslint-plugin-react-hooks';
 import daStyle from 'eslint-config-dicodingacademy';
 
 export default [
+  {
+    ignores: ['dist/**', 'node_modules/**'],
+  },
   { files: ['**/*.{js,mjs,cjs,jsx}'] },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   pluginJs.configs.recommended,
