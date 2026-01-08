@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PlusCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 import {
   ThreadsList,
@@ -127,13 +128,23 @@ function HomePage() {
                 )}
               </div>
 
-              {showThreadInput && (
-                <ThreadInput
-                  addThread={onAddThread}
-                  onCancel={() => setShowThreadInput(false)}
-                  loading={isAddingThread}
-                />
-              )}
+              <AnimatePresence>
+                {showThreadInput && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0, marginBottom: 0 }}
+                    animate={{ opacity: 1, height: 'auto', marginBottom: 24 }}
+                    exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <ThreadInput
+                      addThread={onAddThread}
+                      onCancel={() => setShowThreadInput(false)}
+                      loading={isAddingThread}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {categories.length > 0 && (
                 <CategoryFilter
