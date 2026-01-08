@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { User, Mail, Lock } from 'lucide-react';
+import { User, Mail, Lock, Loader2 } from 'lucide-react';
 import useInput from '../../hooks/useInput';
-import { LoadingCircle } from '../common';
 
 function RegisterInput({ register, loading = false }) {
   const [name, onNameChange] = useInput('');
@@ -99,7 +98,7 @@ function RegisterInput({ register, loading = false }) {
       >
         {loading ? (
           <>
-            <LoadingCircle size="w-5 h-5" />
+            <Loader2 className="w-5 h-5 animate-spin" />
             <span>Memproses...</span>
           </>
         ) : (

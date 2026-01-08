@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
-import { Home, Trophy, LogOut, Moon, Sun, LogIn } from 'lucide-react';
+import { Home, Trophy, LogOut, Moon, Sun, LogIn, Loader2 } from 'lucide-react';
 import { asyncLogoutUser } from '../../states/shared/action';
 import { toggleThemeActionCreator } from '../../states/theme/action';
 
 function Navigation({ authUser, theme }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const onLogout = () => {
-    dispatch(asyncLogoutUser());
-    navigate('/');
+    setIsLoggingOut(true);
+    // Berikan sedikit delay agar animasi loading terlihat lebih halus
+    setTimeout(() => {
+      dispatch(asyncLogoutUser());
+      navigate('/');
+      setIsLoggingOut(false);
+    }, 600);
   };
 
   const onToggleTheme = () => {
@@ -78,14 +84,21 @@ function Navigation({ authUser, theme }) {
                   </span>
                 </div>
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: isLoggingOut ? 1 : 1.05 }}
+                  whileTap={{ scale: isLoggingOut ? 1 : 0.95 }}
                   type="button"
                   onClick={onLogout}
-                  className="flex items-center space-x-2 px-3 py-2 rounded-lg text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                  disabled={isLoggingOut}
+                  className="flex items-center space-x-2 px-3 py-2 rounded-lg text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <LogOut className="w-5 h-5" />
-                  <span className="hidden sm:inline">Logout</span>
+                  {isLoggingOut ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <LogOut className="w-5 h-5" />
+                  )}
+                  <span className="hidden sm:inline">
+                    {isLoggingOut ? 'Logging out...' : 'Logout'}
+                  </span>
                 </motion.button>
               </div>
             ) : (

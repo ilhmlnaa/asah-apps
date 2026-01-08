@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Mail, Lock } from 'lucide-react';
+import { Mail, Lock, Loader2 } from 'lucide-react';
 import useInput from '../../hooks/useInput';
-import { LoadingCircle } from '../common';
 
 function LoginInput({ login, loading = false }) {
   const [email, onEmailChange] = useInput('');
@@ -71,7 +70,7 @@ function LoginInput({ login, loading = false }) {
       >
         {loading ? (
           <>
-            <LoadingCircle size="w-5 h-5" />
+            <Loader2 className="w-5 h-5 animate-spin" />
             <span>Memproses...</span>
           </>
         ) : (
