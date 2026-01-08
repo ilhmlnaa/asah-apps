@@ -10,6 +10,7 @@ import {
   CategoryFilter,
   Sidebar,
   PageTransition,
+  ThreadItemSkeleton,
 } from '../components';
 import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 import {
@@ -53,7 +54,11 @@ function HomePage() {
 
   const onAddThread = ({ title, body, category }) => {
     if (!authUser) {
-      toast.error(t('common.pleaseLogin', { action: t('homePage.newThread').toLowerCase() }));
+      toast.error(
+        t('common.pleaseLogin', {
+          action: t('homePage.newThread').toLowerCase(),
+        })
+      );
       return;
     }
 
@@ -82,7 +87,11 @@ function HomePage() {
 
   const onToggleThreadInput = () => {
     if (!authUser) {
-      toast.error(t('common.pleaseLogin', { action: t('homePage.newThread').toLowerCase() }));
+      toast.error(
+        t('common.pleaseLogin', {
+          action: t('homePage.newThread').toLowerCase(),
+        })
+      );
       return;
     }
     setShowThreadInput(!showThreadInput);
@@ -136,7 +145,13 @@ function HomePage() {
                 />
               )}
 
-              {filteredThreads.length === 0 ? (
+              {threads.length === 0 ? (
+                <div className="space-y-4">
+                  {[1, 2, 3].map((i) => (
+                    <ThreadItemSkeleton key={i} />
+                  ))}
+                </div>
+              ) : filteredThreads.length === 0 ? (
                 <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-md">
                   <p className="text-gray-500 dark:text-gray-400 text-lg">
                     {selectedCategory
@@ -147,10 +162,10 @@ function HomePage() {
               ) : (
                 <ThreadsList
                   threads={filteredThreads}
-                  authUser={authUser}
                   upVote={onUpVote}
                   downVote={onDownVote}
                   neutralVote={onNeutralVote}
+                  authUser={authUser}
                 />
               )}
             </div>

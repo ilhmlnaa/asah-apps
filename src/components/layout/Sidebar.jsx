@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Trophy, TrendingUp, Tag } from 'lucide-react';
 import { asyncReceiveLeaderboards } from '../../states/leaderboards/action';
+import { TopContributorsSkeleton } from '../common/Skeleton';
 
 function Sidebar({ categories, selectedCategory, onCategoryChange }) {
   const { t } = useTranslation();
@@ -42,10 +43,8 @@ function Sidebar({ categories, selectedCategory, onCategoryChange }) {
           </Link>
         </div>
 
-        {topLeaderboards.length === 0 ? (
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            {t('common.noThreads')}
-          </p>
+        {leaderboards.length === 0 ? (
+          <TopContributorsSkeleton />
         ) : (
           <div className="space-y-3">
             {topLeaderboards.map((item, index) => (

@@ -2,17 +2,25 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Trophy } from 'lucide-react';
-import { LeaderboardItem, PageTransition } from '../components';
+import {
+  LeaderboardItem,
+  PageTransition,
+  LeaderboardSkeleton,
+} from '../components';
 import { asyncReceiveLeaderboards } from '../states/leaderboards/action';
 
 function LeaderboardsPage() {
-  const { leaderboards = [] } = useSelector((states) => states);
+  const { leaderboards = [], loadingBar } = useSelector((states) => states);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(asyncReceiveLeaderboards());
   }, [dispatch]);
+
+  const isLoading =
+    loadingBar?.default > 0 ||
+    (leaderboards.length === 0 && loadingBar?.default === undefined);
 
   return (
     <PageTransition>
@@ -29,12 +37,8 @@ function LeaderboardsPage() {
             {t('leaderboardsPage.topContributors')}
           </p>
 
-          {leaderboards.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-gray-500 dark:text-gray-400 text-lg">
-                {t('common.noThreads')}
-              </p>
-            </div>
+          {isLoading ? (
+            <LeaderboardSkeleton />
           ) : (
             <div className="space-y-4">
               {leaderboards.map((leaderboard, index) => (
