@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ThumbsUp, ThumbsDown, MessageCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { CommentInput, CommentsList, PageTransition } from '../components';
@@ -19,6 +20,7 @@ import {
 function DetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { threadDetail = null, authUser = null } = useSelector(
     (states) => states
   );
@@ -34,7 +36,7 @@ function DetailPage() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
         <div className="text-center">
           <div className="text-gray-500 dark:text-gray-400">
-            Loading thread...
+            {t('common.loading')}
           </div>
         </div>
       </div>
@@ -47,14 +49,14 @@ function DetailPage() {
 
   const onAddComment = (content) => {
     if (!authUser) {
-      toast.error('Please login to comment');
+      toast.error(t('common.pleaseLogin', { action: t('detailPage.comments').toLowerCase() }));
       return;
     }
 
     setIsAddingComment(true);
     dispatch(asyncCreateComment({ threadId: id, content }))
       .then(() => {
-        toast.success('Comment added successfully!');
+        toast.success(t('detailPage.commentAdded'));
       })
       .finally(() => {
         setIsAddingComment(false);
@@ -63,7 +65,7 @@ function DetailPage() {
 
   const onUpVoteThread = () => {
     if (!authUser) {
-      toast.error('Please login to vote');
+      toast.error(t('common.pleaseLoginToVote'));
       return;
     }
     if (isUpVoted) {
@@ -75,7 +77,7 @@ function DetailPage() {
 
   const onDownVoteThread = () => {
     if (!authUser) {
-      toast.error('Please login to vote');
+      toast.error(t('common.pleaseLoginToVote'));
       return;
     }
     if (isDownVoted) {
@@ -107,7 +109,7 @@ function DetailPage() {
             className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-6 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span>Back to discussions</span>
+            <span>{t('detailPage.backToHome')}</span>
           </button>
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
@@ -193,13 +195,13 @@ function DetailPage() {
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-              Comments ({threadDetail.comments.length})
+              {t('detailPage.comments')} ({threadDetail.comments.length})
             </h2>
 
             {/* Comment Input */}
             <div className="mb-8">
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-                Beri Komentar
+                {t('detailPage.comments')}
               </h3>
               {authUser ? (
                 <CommentInput
@@ -209,13 +211,13 @@ function DetailPage() {
               ) : (
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-lg p-6 text-center">
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    Anda harus login terlebih dahulu untuk memberikan komentar.
+                    {t('common.pleaseLogin', { action: t('detailPage.comments').toLowerCase() })}
                   </p>
                   <Link
                     to="/login"
                     className="inline-flex items-center space-x-2 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
                   >
-                    Login Sekarang
+                    {t('navigation.login')}
                   </Link>
                 </div>
               )}

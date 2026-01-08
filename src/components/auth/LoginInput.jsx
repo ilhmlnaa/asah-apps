@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { Mail, Lock, Loader2 } from 'lucide-react';
 import useInput from '../../hooks/useInput';
 
 function LoginInput({ login, loading = false }) {
+  const { t } = useTranslation();
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
 
@@ -20,7 +22,7 @@ function LoginInput({ login, loading = false }) {
           htmlFor="email"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
         >
-          Email
+          {t('common.email')}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -44,7 +46,7 @@ function LoginInput({ login, loading = false }) {
           htmlFor="password"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
         >
-          Password
+          {t('common.password')}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -71,10 +73,10 @@ function LoginInput({ login, loading = false }) {
         {loading ? (
           <>
             <Loader2 className="w-5 h-5 animate-spin" />
-            <span>Memproses...</span>
+            <span>{t('common.loading')}</span>
           </>
         ) : (
-          'Login'
+          t('navigation.login')
         )}
       </button>
     </form>

@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Trophy, TrendingUp, Tag } from 'lucide-react';
 import { asyncReceiveLeaderboards } from '../../states/leaderboards/action';
 
 function Sidebar({ categories, selectedCategory, onCategoryChange }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { leaderboards = [] } = useSelector((states) => states);
 
@@ -29,20 +31,20 @@ function Sidebar({ categories, selectedCategory, onCategoryChange }) {
           <div className="flex items-center space-x-2">
             <Trophy className="w-5 h-5 text-yellow-500" />
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              Top Contributors
+              {t('leaderboardsPage.topContributors')}
             </h3>
           </div>
           <Link
             to="/leaderboards"
             className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
           >
-            View All
+            {t('leaderboardsPage.leaderboards')}
           </Link>
         </div>
 
         {topLeaderboards.length === 0 ? (
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            No data yet
+            {t('common.noThreads')}
           </p>
         ) : (
           <div className="space-y-3">
@@ -76,7 +78,7 @@ function Sidebar({ categories, selectedCategory, onCategoryChange }) {
           <div className="flex items-center space-x-2 mb-4">
             <Tag className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              Popular Topics
+              {t('sidebar.trending')}
             </h3>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -99,10 +101,10 @@ function Sidebar({ categories, selectedCategory, onCategoryChange }) {
       )}
 
       {/* Stats Card */}
-      <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-md p-6 text-white">
+      <div className="bg-linear-to-br from-blue-500 to-blue-600 rounded-lg shadow-md p-6 text-white">
         <div className="flex items-center space-x-2 mb-3">
           <TrendingUp className="w-5 h-5" />
-          <h3 className="text-lg font-semibold">Community Stats</h3>
+          <h3 className="text-lg font-semibold">{t('navigation.forumApp')}</h3>
         </div>
         <div className="space-y-2">
           <div className="flex justify-between items-center">
@@ -110,7 +112,7 @@ function Sidebar({ categories, selectedCategory, onCategoryChange }) {
             <span className="font-bold text-xl">🔥</span>
           </div>
           <p className="text-xs text-blue-100 mt-3">
-            Join the discussion and share your knowledge with the community!
+            {t('authAside.joinCommunity')}
           </p>
         </div>
       </div>

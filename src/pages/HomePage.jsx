@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PlusCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import {
   ThreadsList,
@@ -26,6 +27,7 @@ function HomePage() {
   } = useSelector((states) => states);
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [showThreadInput, setShowThreadInput] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [isAddingThread, setIsAddingThread] = useState(false);
@@ -51,7 +53,7 @@ function HomePage() {
 
   const onAddThread = ({ title, body, category }) => {
     if (!authUser) {
-      toast.error('Please login to create a thread');
+      toast.error(t('common.pleaseLogin', { action: t('homePage.newThread').toLowerCase() }));
       return;
     }
 
@@ -59,7 +61,7 @@ function HomePage() {
     dispatch(asyncCreateThread({ title, body, category }))
       .then(() => {
         setShowThreadInput(false);
-        toast.success('Thread created successfully!');
+        toast.success(t('homePage.threadCreated'));
       })
       .finally(() => {
         setIsAddingThread(false);
@@ -80,7 +82,7 @@ function HomePage() {
 
   const onToggleThreadInput = () => {
     if (!authUser) {
-      toast.error('Please login to create a thread');
+      toast.error(t('common.pleaseLogin', { action: t('homePage.newThread').toLowerCase() }));
       return;
     }
     setShowThreadInput(!showThreadInput);
@@ -95,7 +97,7 @@ function HomePage() {
             <div className="lg:col-span-2">
               <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-                  Discussions
+                  {t('homePage.discussions')}
                 </h1>
                 {authUser ? (
                   !showThreadInput && (
@@ -105,7 +107,7 @@ function HomePage() {
                       className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
                     >
                       <PlusCircle className="w-5 h-5" />
-                      <span>New Thread</span>
+                      <span>{t('homePage.newThread')}</span>
                     </button>
                   )
                 ) : (
@@ -113,7 +115,7 @@ function HomePage() {
                     to="/login"
                     className="flex items-center space-x-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
                   >
-                    <span>Login to post</span>
+                    <span>{t('homePage.loginToPost')}</span>
                   </Link>
                 )}
               </div>
@@ -138,8 +140,8 @@ function HomePage() {
                 <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-md">
                   <p className="text-gray-500 dark:text-gray-400 text-lg">
                     {selectedCategory
-                      ? 'No threads found in this category.'
-                      : 'No threads yet. Be the first to create one!'}
+                      ? t('common.noThreadsInCategory')
+                      : t('common.noThreads')}
                   </p>
                 </div>
               ) : (

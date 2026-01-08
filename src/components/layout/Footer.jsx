@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Heart, Github, Linkedin } from 'lucide-react';
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -9,11 +11,10 @@ function Footer() {
           {/* About Section */}
           <div>
             <h3 className="text-lg font-bold text-blue-600 dark:text-blue-500 mb-3">
-              Forum Diskusi
+              {t('navigation.forumApp')}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Platform diskusi modern untuk berbagi pengetahuan dan pengalaman.
-              Bergabunglah dengan komunitas kami!
+              {t('authAside.welcomeMessage')}. {t('authAside.joinCommunity')}
             </p>
           </div>
 
@@ -28,7 +29,7 @@ function Footer() {
                   href="/"
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 text-sm transition-colors"
                 >
-                  Home
+                  {t('navigation.home')}
                 </a>
               </li>
               <li>
@@ -36,7 +37,7 @@ function Footer() {
                   href="/leaderboards"
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 text-sm transition-colors"
                 >
-                  Leaderboards
+                  {t('navigation.leaderboards')}
                 </a>
               </li>
             </ul>
@@ -74,7 +75,7 @@ function Footer() {
             Made with{' '}
             <Heart className="w-4 h-4 mx-1 text-red-500" fill="currentColor" />{' '}
             for Dicoding Submission
-            <span className="mx-2">•</span>© 2025 Forum Diskusi
+            <span className="mx-2">•</span>© 2025 {t('navigation.forumApp')}
           </p>
         </div>
       </div>

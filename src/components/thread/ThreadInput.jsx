@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Loader2, X } from 'lucide-react';
 import useInput from '../../hooks/useInput';
-import { LoadingCircle } from '../common';
 
 function ThreadInput({ addThread, onCancel, loading = false }) {
+  const { t } = useTranslation();
   const [title, onTitleChange, setTitle] = useInput('');
   const [body, onBodyChange, setBody] = useInput('');
   const [category, onCategoryChange, setCategory] = useInput('');
@@ -21,7 +22,7 @@ function ThreadInput({ addThread, onCancel, loading = false }) {
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-          Create New Thread
+          {t('homePage.newThread')}
         </h2>
         {onCancel && (
           <button
@@ -41,14 +42,14 @@ function ThreadInput({ addThread, onCancel, loading = false }) {
             htmlFor="title"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
           >
-            Title
+            {t('common.title')}
           </label>
           <input
             type="text"
             id="title"
             value={title}
             onChange={onTitleChange}
-            placeholder="Enter thread title"
+            placeholder={t('common.title')}
             className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
             required
             disabled={loading}
@@ -60,14 +61,14 @@ function ThreadInput({ addThread, onCancel, loading = false }) {
             htmlFor="category"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
           >
-            Category (Optional)
+            {t('common.category')}
           </label>
           <input
             type="text"
             id="category"
             value={category}
             onChange={onCategoryChange}
-            placeholder="e.g., General, Tech, Question"
+            placeholder={t('common.category')}
             className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={loading}
           />
@@ -78,13 +79,13 @@ function ThreadInput({ addThread, onCancel, loading = false }) {
             htmlFor="body"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
           >
-            Content
+            {t('common.content')}
           </label>
           <textarea
             id="body"
             value={body}
             onChange={onBodyChange}
-            placeholder="What's on your mind?"
+            placeholder={t('common.writeYourThread')}
             rows="5"
             className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
             required
@@ -100,7 +101,7 @@ function ThreadInput({ addThread, onCancel, loading = false }) {
               disabled={loading}
               className="px-6 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Cancel
+              {t('common.cancel')}
             </button>
           )}
           <button
@@ -110,11 +111,11 @@ function ThreadInput({ addThread, onCancel, loading = false }) {
           >
             {loading ? (
               <>
-                <LoadingCircle size="w-5 h-5" />
-                <span>Memposting...</span>
+                <Loader2 size="w-5 h-5 animate-spin" />
+                <span>{t('common.loading')}</span>
               </>
             ) : (
-              'Post Thread'
+              t('common.submit')
             )}
           </button>
         </div>

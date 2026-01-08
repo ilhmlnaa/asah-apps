@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
+import { changeLanguage } from './utils/i18n';
 import { Navigation, Loading, Footer } from './components';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
@@ -11,12 +12,14 @@ import RegisterPage from './pages/RegisterPage';
 import LeaderboardsPage from './pages/LeaderboardsPage';
 import { asyncPreloadProcess } from './states/shared/action';
 import { setThemeActionCreator } from './states/theme/action';
+import { setLanguageActionCreator } from './states/language/action';
 
 function App() {
   const {
     authUser = null,
     isPreload = false,
     theme = 'dark',
+    language = 'en',
   } = useSelector((states) => states);
 
   const dispatch = useDispatch();
@@ -28,8 +31,17 @@ function App() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'dark';
+    const savedLanguage = localStorage.getItem('language') || 'en';
+
+    // Set theme
     dispatch(setThemeActionCreator(savedTheme));
-  }, [dispatch]);
+
+    // Set language (only if different from current)
+    if (savedLanguage !== language) {
+      dispatch(setLanguageActionCreator(savedLanguage));
+      changeLanguage(savedLanguage);
+    }
+  }, [dispatch, language]);
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
@@ -51,7 +63,7 @@ function App() {
     <>
       <Toaster />
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col transition-colors duration-300">
-        {!isAuthPage && <Navigation authUser={authUser} theme={theme} />}
+        {!isAuthPage && <Navigation authUser={authUser} theme={theme} language={language} />}
         <Loading />
         <main className="flex-1">
           <AnimatePresence mode="wait">

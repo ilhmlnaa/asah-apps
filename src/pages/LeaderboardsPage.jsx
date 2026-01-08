@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Trophy } from 'lucide-react';
 import { LeaderboardItem, PageTransition } from '../components';
 import { asyncReceiveLeaderboards } from '../states/leaderboards/action';
@@ -7,6 +8,7 @@ import { asyncReceiveLeaderboards } from '../states/leaderboards/action';
 function LeaderboardsPage() {
   const { leaderboards = [] } = useSelector((states) => states);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(asyncReceiveLeaderboards());
@@ -19,18 +21,18 @@ function LeaderboardsPage() {
           <div className="flex items-center space-x-3 mb-6">
             <Trophy className="w-8 h-8 text-blue-600 dark:text-blue-500" />
             <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-              Leaderboards
+              {t('leaderboardsPage.leaderboards')}
             </h1>
           </div>
 
           <p className="text-gray-600 dark:text-gray-400 mb-8">
-            Top contributors in our community
+            {t('leaderboardsPage.topContributors')}
           </p>
 
           {leaderboards.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-500 dark:text-gray-400 text-lg">
-                No leaderboard data available yet.
+                {t('common.noThreads')}
               </p>
             </div>
           ) : (
