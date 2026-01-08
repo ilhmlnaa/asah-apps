@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
+import toast from 'react-hot-toast';
 import api from '../../utils/api';
 import { receiveThreadsActionCreator } from '../threads/action';
 import { receiveUsersActionCreator } from '../users/action';
@@ -18,7 +19,7 @@ function asyncPopulateUsersAndThreads() {
       dispatch(receiveUsersActionCreator(users));
       dispatch(receiveThreadsActionCreator(threads));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -44,7 +45,7 @@ function asyncRegisterUser({ name, email, password }) {
     try {
       await api.register({ name, email, password });
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       throw error;
     } finally {
       dispatch(hideLoading());
@@ -61,8 +62,9 @@ function asyncLoginUser({ email, password }) {
 
       const authUser = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
+      toast.success(`Selamat datang, ${authUser.name}!`);
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       throw error;
     } finally {
       dispatch(hideLoading());

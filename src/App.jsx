@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import { Toaster } from 'react-hot-toast';
 import { Navigation, Loading, Footer } from './components';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
@@ -43,25 +44,14 @@ function App() {
     return null;
   }
 
-  if (!authUser) {
-    return (
-      <>
-        <Loading />
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="*" element={<Navigate to="/login" replace />} />
-          </Routes>
-        </AnimatePresence>
-      </>
-    );
-  }
+  const isAuthPage =
+    location.pathname === '/login' || location.pathname === '/register';
 
   return (
     <>
+      <Toaster />
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col transition-colors duration-300">
-        <Navigation authUser={authUser} theme={theme} />
+        {!isAuthPage && <Navigation authUser={authUser} theme={theme} />}
         <Loading />
         <main className="flex-1">
           <AnimatePresence mode="wait">
@@ -69,11 +59,17 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/threads/:id" element={<DetailPage />} />
               <Route path="/leaderboards" element={<LeaderboardsPage />} />
+              {!authUser && (
+                <>
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                </>
+              )}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </AnimatePresence>
         </main>
-        <Footer />
+        {!isAuthPage && <Footer />}
       </div>
     </>
   );

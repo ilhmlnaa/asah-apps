@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
-import { Home, Trophy, LogOut, Moon, Sun } from 'lucide-react';
+import { Home, Trophy, LogOut, Moon, Sun, LogIn } from 'lucide-react';
 import { asyncLogoutUser } from '../../states/shared/action';
 import { toggleThemeActionCreator } from '../../states/theme/action';
 
@@ -65,7 +65,7 @@ function Navigation({ authUser, theme }) {
               )}
             </motion.button>
 
-            {authUser && (
+            {authUser ? (
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
                   <img
@@ -88,6 +88,14 @@ function Navigation({ authUser, theme }) {
                   <span className="hidden sm:inline">Logout</span>
                 </motion.button>
               </div>
+            ) : (
+              <Link
+                to="/login"
+                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-sm"
+              >
+                <LogIn className="w-5 h-5" />
+                <span>Login</span>
+              </Link>
             )}
           </div>
         </div>

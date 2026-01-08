@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ThumbsUp, ThumbsDown, MessageCircle } from 'lucide-react';
+import toast from 'react-hot-toast';
 import { postedAt } from '../../utils';
 
 function ThreadItem({
@@ -28,7 +29,7 @@ function ThreadItem({
   const onUpVote = (e) => {
     e.stopPropagation();
     if (!authUser) {
-      alert('Please login to vote');
+      toast.error('Please login to vote');
       return;
     }
     if (isUpVoted) {
@@ -41,7 +42,7 @@ function ThreadItem({
   const onDownVote = (e) => {
     e.stopPropagation();
     if (!authUser) {
-      alert('Please login to vote');
+      toast.error('Please login to vote');
       return;
     }
     if (isDownVoted) {

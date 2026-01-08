@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
 import api from '../../utils/api';
 
@@ -102,7 +103,7 @@ function asyncReceiveThreadDetail(threadId) {
       const threadDetail = await api.getThreadDetail(threadId);
       dispatch(receiveThreadDetailActionCreator(threadDetail));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -116,7 +117,7 @@ function asyncCreateComment({ threadId, content }) {
       const comment = await api.createComment({ threadId, content });
       dispatch(addCommentActionCreator(comment));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       throw error;
     } finally {
       dispatch(hideLoading());
@@ -132,7 +133,7 @@ function asyncUpVoteThreadDetail() {
     try {
       await api.upVoteThread(threadDetail.id);
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(upVoteThreadDetailActionCreator(authUser.id));
     }
   };
@@ -146,7 +147,7 @@ function asyncDownVoteThreadDetail() {
     try {
       await api.downVoteThread(threadDetail.id);
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(downVoteThreadDetailActionCreator(authUser.id));
     }
   };
@@ -160,7 +161,7 @@ function asyncNeutralVoteThreadDetail() {
     try {
       await api.neutralVoteThread(threadDetail.id);
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(neutralVoteThreadDetailActionCreator(authUser.id));
     }
   };
@@ -174,7 +175,7 @@ function asyncUpVoteComment(commentId) {
     try {
       await api.upVoteComment({ threadId: threadDetail.id, commentId });
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(upVoteCommentActionCreator({ commentId, userId: authUser.id }));
     }
   };
@@ -188,7 +189,7 @@ function asyncDownVoteComment(commentId) {
     try {
       await api.downVoteComment({ threadId: threadDetail.id, commentId });
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(
         downVoteCommentActionCreator({ commentId, userId: authUser.id })
       );
@@ -206,7 +207,7 @@ function asyncNeutralVoteComment(commentId) {
     try {
       await api.neutralVoteComment({ threadId: threadDetail.id, commentId });
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(
         neutralVoteCommentActionCreator({ commentId, userId: authUser.id })
       );
@@ -234,3 +235,4 @@ export {
   asyncDownVoteComment,
   asyncNeutralVoteComment,
 };
+

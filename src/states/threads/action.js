@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
 import api from '../../utils/api';
 
@@ -64,7 +65,7 @@ function asyncCreateThread({ title, body, category }) {
       const thread = await api.createThread({ title, body, category });
       dispatch(addThreadActionCreator(thread));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       throw error;
     } finally {
       dispatch(hideLoading());
@@ -80,7 +81,7 @@ function asyncUpVoteThread(threadId) {
     try {
       await api.upVoteThread(threadId);
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(upVoteThreadActionCreator({ threadId, userId: authUser.id }));
     }
   };
@@ -94,7 +95,7 @@ function asyncDownVoteThread(threadId) {
     try {
       await api.downVoteThread(threadId);
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(downVoteThreadActionCreator({ threadId, userId: authUser.id }));
     }
   };
@@ -108,7 +109,7 @@ function asyncNeutralVoteThread(threadId) {
     try {
       await api.neutralVoteThread(threadId);
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       dispatch(
         neutralVoteThreadActionCreator({ threadId, userId: authUser.id })
       );
@@ -128,3 +129,4 @@ export {
   asyncDownVoteThread,
   asyncNeutralVoteThread,
 };
+

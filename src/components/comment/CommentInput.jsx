@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Send } from 'lucide-react';
 import useInput from '../../hooks/useInput';
+import { LoadingCircle } from '../common';
 
-function CommentInput({ addComment }) {
+function CommentInput({ addComment, loading = false }) {
   const [content, onContentChange, setContent] = useInput('');
 
   const onSubmit = (e) => {
@@ -22,14 +23,20 @@ function CommentInput({ addComment }) {
           onChange={onContentChange}
           placeholder="Write a comment..."
           rows="3"
-          className="block w-full px-4 py-3 pr-12 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none"
+          className="block w-full px-4 py-3 pr-12 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
           required
+          disabled={loading}
         />
         <button
           type="submit"
-          className="absolute bottom-3 right-3 p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+          disabled={loading}
+          className="absolute bottom-3 right-3 p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Send className="w-5 h-5" />
+          {loading ? (
+            <LoadingCircle size="w-5 h-5" />
+          ) : (
+            <Send className="w-5 h-5" />
+          )}
         </button>
       </div>
     </form>
@@ -38,6 +45,7 @@ function CommentInput({ addComment }) {
 
 CommentInput.propTypes = {
   addComment: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
 };
 
 export default CommentInput;

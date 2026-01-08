@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { PlusCircle } from 'lucide-react';
+import toast from 'react-hot-toast';
 import {
   ThreadsList,
   ThreadInput,
@@ -26,6 +28,7 @@ function HomePage() {
   const dispatch = useDispatch();
   const [showThreadInput, setShowThreadInput] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [isAddingThread, setIsAddingThread] = useState(false);
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads());
@@ -48,16 +51,18 @@ function HomePage() {
 
   const onAddThread = ({ title, body, category }) => {
     if (!authUser) {
-      alert('Please login to create a thread');
+      toast.error('Please login to create a thread');
       return;
     }
 
+    setIsAddingThread(true);
     dispatch(asyncCreateThread({ title, body, category }))
       .then(() => {
         setShowThreadInput(false);
+        toast.success('Thread created successfully!');
       })
-      .catch(() => {
-        // Error already handled in action
+      .finally(() => {
+        setIsAddingThread(false);
       });
   };
 
@@ -75,7 +80,7 @@ function HomePage() {
 
   const onToggleThreadInput = () => {
     if (!authUser) {
-      alert('Please login to create a thread');
+      toast.error('Please login to create a thread');
       return;
     }
     setShowThreadInput(!showThreadInput);
@@ -92,15 +97,24 @@ function HomePage() {
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                   Discussions
                 </h1>
-                {authUser && !showThreadInput && (
-                  <button
-                    type="button"
-                    onClick={onToggleThreadInput}
-                    className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                {authUser ? (
+                  !showThreadInput && (
+                    <button
+                      type="button"
+                      onClick={onToggleThreadInput}
+                      className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                    >
+                      <PlusCircle className="w-5 h-5" />
+                      <span>New Thread</span>
+                    </button>
+                  )
+                ) : (
+                  <Link
+                    to="/login"
+                    className="flex items-center space-x-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
                   >
-                    <PlusCircle className="w-5 h-5" />
-                    <span className="hidden sm:inline">New Thread</span>
-                  </button>
+                    <span>Login to post</span>
+                  </Link>
                 )}
               </div>
 
@@ -108,6 +122,7 @@ function HomePage() {
                 <ThreadInput
                   addThread={onAddThread}
                   onCancel={() => setShowThreadInput(false)}
+                  loading={isAddingThread}
                 />
               )}
 

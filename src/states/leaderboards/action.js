@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { hideLoading, showLoading } from '@dimasmds/react-redux-loading-bar';
 import api from '../../utils/api';
 
@@ -21,7 +22,7 @@ function asyncReceiveLeaderboards() {
       const leaderboards = await api.getLeaderboards();
       dispatch(receiveLeaderboardsActionCreator(leaderboards));
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -33,3 +34,4 @@ export {
   receiveLeaderboardsActionCreator,
   asyncReceiveLeaderboards,
 };
+

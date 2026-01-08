@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { X } from 'lucide-react';
 import useInput from '../../hooks/useInput';
+import { LoadingCircle } from '../common';
 
-function ThreadInput({ addThread, onCancel }) {
+function ThreadInput({ addThread, onCancel, loading = false }) {
   const [title, onTitleChange, setTitle] = useInput('');
   const [body, onBodyChange, setBody] = useInput('');
   const [category, onCategoryChange, setCategory] = useInput('');
@@ -26,7 +27,8 @@ function ThreadInput({ addThread, onCancel }) {
           <button
             type="button"
             onClick={onCancel}
-            className="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            disabled={loading}
+            className="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 disabled:opacity-50"
           >
             <X className="w-5 h-5" />
           </button>
@@ -47,8 +49,9 @@ function ThreadInput({ addThread, onCancel }) {
             value={title}
             onChange={onTitleChange}
             placeholder="Enter thread title"
-            className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+            className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
             required
+            disabled={loading}
           />
         </div>
 
@@ -65,7 +68,8 @@ function ThreadInput({ addThread, onCancel }) {
             value={category}
             onChange={onCategoryChange}
             placeholder="e.g., General, Tech, Question"
-            className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+            className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={loading}
           />
         </div>
 
@@ -82,8 +86,9 @@ function ThreadInput({ addThread, onCancel }) {
             onChange={onBodyChange}
             placeholder="What's on your mind?"
             rows="5"
-            className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none"
+            className="block w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
             required
+            disabled={loading}
           />
         </div>
 
@@ -92,16 +97,25 @@ function ThreadInput({ addThread, onCancel }) {
             <button
               type="button"
               onClick={onCancel}
-              className="px-6 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              disabled={loading}
+              className="px-6 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Cancel
             </button>
           )}
           <button
             type="submit"
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+            disabled={loading}
+            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
-            Post Thread
+            {loading ? (
+              <>
+                <LoadingCircle size="w-5 h-5" />
+                <span>Memposting...</span>
+              </>
+            ) : (
+              'Post Thread'
+            )}
           </button>
         </div>
       </form>
@@ -112,10 +126,12 @@ function ThreadInput({ addThread, onCancel }) {
 ThreadInput.propTypes = {
   addThread: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 ThreadInput.defaultProps = {
   onCancel: null,
+  loading: false,
 };
 
 export default ThreadInput;

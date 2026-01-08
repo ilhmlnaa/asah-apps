@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
+import toast from 'react-hot-toast';
 import { postedAt } from '../../utils';
 
 function CommentItem({
   id,
   content,
   createdAt,
-  owner,
   upVotesBy,
   downVotesBy,
+  owner,
   authUser,
   upVote,
   downVote,
@@ -20,7 +21,7 @@ function CommentItem({
 
   const onUpVote = () => {
     if (!authUser) {
-      alert('Please login to vote');
+      toast.error('Please login to vote');
       return;
     }
     if (isUpVoted) {
@@ -32,7 +33,7 @@ function CommentItem({
 
   const onDownVote = () => {
     if (!authUser) {
-      alert('Please login to vote');
+      toast.error('Please login to vote');
       return;
     }
     if (isDownVoted) {

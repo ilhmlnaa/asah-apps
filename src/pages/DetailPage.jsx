@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ArrowLeft, ThumbsUp, ThumbsDown, MessageCircle } from 'lucide-react';
+import toast from 'react-hot-toast';
 import { CommentInput, CommentsList, PageTransition } from '../components';
 import { postedAt } from '../utils';
 import {
@@ -22,6 +23,7 @@ function DetailPage() {
     (states) => states
   );
   const dispatch = useDispatch();
+  const [isAddingComment, setIsAddingComment] = useState(false);
 
   useEffect(() => {
     dispatch(asyncReceiveThreadDetail(id));
@@ -45,18 +47,23 @@ function DetailPage() {
 
   const onAddComment = (content) => {
     if (!authUser) {
-      alert('Please login to comment');
+      toast.error('Please login to comment');
       return;
     }
 
-    dispatch(asyncCreateComment({ threadId: id, content })).catch(() => {
-      // Error already handled in action
-    });
+    setIsAddingComment(true);
+    dispatch(asyncCreateComment({ threadId: id, content }))
+      .then(() => {
+        toast.success('Comment added successfully!');
+      })
+      .finally(() => {
+        setIsAddingComment(false);
+      });
   };
 
   const onUpVoteThread = () => {
     if (!authUser) {
-      alert('Please login to vote');
+      toast.error('Please login to vote');
       return;
     }
     if (isUpVoted) {
@@ -68,7 +75,7 @@ function DetailPage() {
 
   const onDownVoteThread = () => {
     if (!authUser) {
-      alert('Please login to vote');
+      toast.error('Please login to vote');
       return;
     }
     if (isDownVoted) {
@@ -189,7 +196,30 @@ function DetailPage() {
               Comments ({threadDetail.comments.length})
             </h2>
 
-            {authUser && <CommentInput addComment={onAddComment} />}
+            {/* Comment Input */}
+            <div className="mb-8">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                Beri Komentar
+              </h3>
+              {authUser ? (
+                <CommentInput
+                  addComment={onAddComment}
+                  loading={isAddingComment}
+                />
+              ) : (
+                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-lg p-6 text-center">
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    Anda harus login terlebih dahulu untuk memberikan komentar.
+                  </p>
+                  <Link
+                    to="/login"
+                    className="inline-flex items-center space-x-2 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                  >
+                    Login Sekarang
+                  </Link>
+                </div>
+              )}
+            </div>
 
             <CommentsList
               comments={threadDetail.comments}

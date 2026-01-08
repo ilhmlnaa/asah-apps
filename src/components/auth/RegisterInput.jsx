@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { User, Mail, Lock } from 'lucide-react';
 import useInput from '../../hooks/useInput';
+import { LoadingCircle } from '../common';
 
-function RegisterInput({ register }) {
+function RegisterInput({ register, loading = false }) {
   const [name, onNameChange] = useInput('');
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
@@ -32,8 +33,9 @@ function RegisterInput({ register }) {
             value={name}
             onChange={onNameChange}
             placeholder="Your name"
-            className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+            className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
             required
+            disabled={loading}
           />
         </div>
       </div>
@@ -55,8 +57,9 @@ function RegisterInput({ register }) {
             value={email}
             onChange={onEmailChange}
             placeholder="your@email.com"
-            className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+            className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
             required
+            disabled={loading}
           />
         </div>
       </div>
@@ -79,8 +82,9 @@ function RegisterInput({ register }) {
             onChange={onPasswordChange}
             placeholder="••••••••"
             minLength={6}
-            className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+            className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
             required
+            disabled={loading}
           />
         </div>
         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
@@ -90,9 +94,17 @@ function RegisterInput({ register }) {
 
       <button
         type="submit"
-        className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+        disabled={loading}
+        className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
-        Register
+        {loading ? (
+          <>
+            <LoadingCircle size="w-5 h-5" />
+            <span>Memproses...</span>
+          </>
+        ) : (
+          'Register'
+        )}
       </button>
     </form>
   );
@@ -100,6 +112,7 @@ function RegisterInput({ register }) {
 
 RegisterInput.propTypes = {
   register: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
 };
 
 export default RegisterInput;
