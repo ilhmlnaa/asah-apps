@@ -111,7 +111,7 @@ function ThreadInput({ addThread, onCancel, loading = false }) {
           >
             {loading ? (
               <>
-                <Loader2 size="w-5 h-5 animate-spin" />
+                <Loader2 className="w-5 h-5 animate-spin" />
                 <span>{t('common.loading')}</span>
               </>
             ) : (
