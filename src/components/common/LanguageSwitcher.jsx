@@ -14,7 +14,6 @@ function LanguageSwitcher() {
   const onToggleLanguage = () => {
     const newLanguage = currentLanguage === 'en' ? 'id' : 'en';
     changeLanguage(newLanguage);
-    // Dispatch to keep Redux in sync
     dispatch({ type: 'SET_LANGUAGE', payload: { language: newLanguage } });
   };
 

@@ -5,7 +5,7 @@
     "logout": "Keluar",
     "login": "Masuk",
     "loggingOut": "Keluar...",
-    "forumApp": "Forum Aplikasi"
+    "forumApp": "Threadly"
   },
   "common": {
     "pleaseLogin": "Silakan masuk untuk {{action}}",
@@ -40,7 +40,7 @@
     "comments": "Komentar"
   },
   "loginPage": {
-    "loginToForum": "Masuk ke Forum",
+    "loginToForum": "Masuk ke Threadly",
     "dontHaveAccount": "Belum punya akun?",
     "register": "Daftar",
     "loginSuccess": "Login berhasil!",
@@ -74,7 +74,7 @@
     "rightsReserved": "Hak cipta dilindungi"
   },
   "authAside": {
-    "welcomeMessage": "Selamat datang di Forum Aplikasi",
+    "welcomeMessage": "Selamat datang di Threadly",
     "joinCommunity": "Tempat terbaik untuk berbagi ide, bertanya, dan berdiskusi dengan komunitas yang hebat. Bergabunglah sekarang!"
   },
   "loading": {

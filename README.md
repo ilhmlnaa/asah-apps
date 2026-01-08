@@ -1,4 +1,4 @@
-# Forum App - React Redux
+# Threadly - React Redux
 
 Aplikasi forum diskusi modern yang dibangun dengan React dan Redux, menggunakan Dicoding Forum API.
 

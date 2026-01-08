@@ -5,7 +5,7 @@
     "logout": "Logout",
     "login": "Login",
     "loggingOut": "Logging out...",
-    "forumApp": "Forum App"
+    "forumApp": "Threadly"
   },
   "common": {
     "pleaseLogin": "Please login to {{action}}",
@@ -40,7 +40,7 @@
     "comments": "Comments"
   },
   "loginPage": {
-    "loginToForum": "Login to Forum",
+    "loginToForum": "Login to Threadly",
     "dontHaveAccount": "Don't have an account?",
     "register": "Register",
     "loginSuccess": "Login successful!",
@@ -74,7 +74,7 @@
     "rightsReserved": "All rights reserved"
   },
   "authAside": {
-    "welcomeMessage": "Welcome to Forum App",
+    "welcomeMessage": "Welcome to Threadly",
     "joinCommunity": "The best place to share ideas, ask questions, and discuss with an amazing community. Join now!"
   },
   "loading": {
