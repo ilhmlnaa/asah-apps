@@ -23,7 +23,6 @@ i18n
     },
   });
 
-// Listen to storage changes for language (across tabs)
 window.addEventListener('storage', (e) => {
   if (e.key === 'language' && e.newValue) {
     i18n.changeLanguage(e.newValue);

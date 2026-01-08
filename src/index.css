@@ -56,7 +56,6 @@ html:not(.dark) {
   overflow: hidden;
 }
 
-/* Loading Bar Styles */
 .loading {
   position: sticky;
   top: 0;

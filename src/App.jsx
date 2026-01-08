@@ -33,10 +33,8 @@ function App() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     const savedLanguage = localStorage.getItem('language') || 'en';
 
-    // Set theme
     dispatch(setThemeActionCreator(savedTheme));
 
-    // Set language (only if different from current)
     if (savedLanguage !== language) {
       dispatch(setLanguageActionCreator(savedLanguage));
       changeLanguage(savedLanguage);

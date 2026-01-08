@@ -16,7 +16,6 @@ function LoginInput({ login, loading = false }) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-6">
-      {/* ... existing fields ... */}
       <div>
         <label
           htmlFor="email"
