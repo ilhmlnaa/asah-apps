@@ -1,3 +1,5 @@
+import i18n from './i18n';
+
 function postedAt(date) {
   const now = new Date();
   const posted = new Date(date);
@@ -8,18 +10,18 @@ function postedAt(date) {
   const diffSeconds = Math.floor(diff / 1000);
 
   if (diffDays > 0) {
-    return `${diffDays} hari yang lalu`;
+    return i18n.t('postedAt.daysAgo', { count: diffDays });
   }
   if (diffHours > 0) {
-    return `${diffHours} jam yang lalu`;
+    return i18n.t('postedAt.hoursAgo', { count: diffHours });
   }
   if (diffMinutes > 0) {
-    return `${diffMinutes} menit yang lalu`;
+    return i18n.t('postedAt.minutesAgo', { count: diffMinutes });
   }
   if (diffSeconds > 0) {
-    return `${diffSeconds} detik yang lalu`;
+    return i18n.t('postedAt.secondsAgo', { count: diffSeconds });
   }
-  return 'baru saja';
+  return i18n.t('postedAt.justNow');
 }
 
 function truncateText(text, maxLength) {

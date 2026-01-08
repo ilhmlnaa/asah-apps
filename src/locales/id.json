@@ -92,5 +92,12 @@
     "title": "Halaman Tidak Ditemukan",
     "message": "Maaf, halaman yang Anda cari tidak ada atau telah dipindahkan ke alamat lain.",
     "backToHome": "Kembali ke Beranda"
+  },
+  "postedAt": {
+    "daysAgo": "{{count}} hari yang lalu",
+    "hoursAgo": "{{count}} jam yang lalu",
+    "minutesAgo": "{{count}} menit yang lalu",
+    "secondsAgo": "{{count}} detik yang lalu",
+    "justNow": "baru saja"
   }
 }
