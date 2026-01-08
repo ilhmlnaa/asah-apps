@@ -84,5 +84,8 @@
     "switchLanguage": "Switch Language",
     "english": "English",
     "indonesian": "Indonesian"
+  },
+  "commentsList": {
+    "noComments": "No comments yet. Be the first to comment!"
   }
 }

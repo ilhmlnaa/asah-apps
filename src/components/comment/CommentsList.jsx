@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import CommentItem from './CommentItem';
 
 function CommentsList({ comments, authUser, upVote, downVote, neutralVote }) {
+  const { t } = useTranslation();
+
   if (comments.length === 0) {
     return (
       <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-        No comments yet. Be the first to comment!
+        {t('commentsList.noComments')}
       </div>
     );
   }
