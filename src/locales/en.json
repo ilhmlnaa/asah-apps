@@ -87,5 +87,10 @@
   },
   "commentsList": {
     "noComments": "No comments yet. Be the first to comment!"
+  },
+  "notFoundPage": {
+    "title": "Page Not Found",
+    "message": "Sorry, the page you're looking for doesn't exist or has been moved to another location.",
+    "backToHome": "Back to Home"
   }
 }

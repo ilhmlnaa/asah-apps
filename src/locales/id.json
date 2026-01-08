@@ -87,5 +87,10 @@
   },
   "commentsList": {
     "noComments": "Belum ada komentar. Jadilah yang pertama berkomentar!"
+  },
+  "notFoundPage": {
+    "title": "Halaman Tidak Ditemukan",
+    "message": "Maaf, halaman yang Anda cari tidak ada atau telah dipindahkan ke alamat lain.",
+    "backToHome": "Kembali ke Beranda"
   }
 }

@@ -42,12 +42,10 @@ function HomePage() {
     user: users.find((user) => user.id === thread.ownerId),
   }));
 
-  // Get unique categories
   const categories = [
     ...new Set(threads.map((thread) => thread.category).filter(Boolean)),
   ];
 
-  // Filter threads by category
   const filteredThreads = selectedCategory
     ? threadList.filter((thread) => thread.category === selectedCategory)
     : threadList;
@@ -99,7 +97,7 @@ function HomePage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className=" bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Main Content */}
