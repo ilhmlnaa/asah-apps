@@ -19,6 +19,7 @@ Aplikasi forum diskusi modern yang dibangun dengan React dan Redux, menggunakan 
 - ✅ **Leaderboards**: Menampilkan top contributors
 - ✅ **Category Filter**: Filter thread berdasarkan kategori
 - ✅ **Dark/Light Theme**: Toggle antara dark mode dan light mode
+- ✅ **Multi-language Support**: Bahasa Inggris dan Indonesia
 - ✅ **Responsive Design**: Tampilan yang responsif untuk mobile dan desktop
 
 ## Tech Stack
@@ -27,6 +28,7 @@ Aplikasi forum diskusi modern yang dibangun dengan React dan Redux, menggunakan 
 - **Redux Toolkit** - State Management
 - **React Router DOM** - Routing
 - **Tailwind CSS 4** - Styling
+- **Framer Motion** - Animations
 - **Lucide React** - Icons
 - **Vite** - Build Tool
 - **ESLint** - Code Linting (Dicoding Academy Style Guide)
@@ -93,7 +95,9 @@ Menggunakan [Dicoding Forum API](https://forum-api.dicoding.dev/v1/)
 
 ## Author
 
-Submission untuk kelas "Menjadi React Web Developer Expert" - Dicoding Academy
+**Ilham Maulana**
+
+Submission pertama untuk kelas "Menjadi React Web Developer Expert" - Dicoding Academy
 
 ## License
 
