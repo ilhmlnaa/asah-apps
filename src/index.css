@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
   font-family: "Lexend", "Oxygen", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11,7 +13,6 @@ body {
   min-height: 100vh;
 }
 
-/* Ensure dark mode styles are applied */
 html.dark {
   color-scheme: dark;
 }
